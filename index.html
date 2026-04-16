@@ -94,7 +94,7 @@ header {
 }
 
 .logo img {
-    height: 40px;
+    height: 60px;
     object-fit: contain;
 }
 
@@ -169,7 +169,7 @@ nav a:hover::after {
 }
 
 .hero-logo {
-    height: 150px;
+    height: 220px;
     margin-bottom: 40px;
     animation: fadeInUp 0.8s ease;
 }
@@ -1008,12 +1008,25 @@ async function getAIResponse(userMessage) {
             })
         });
 
+        if (!response.ok) {
+            throw new Error('Erro na resposta da API: ' + response.status);
+        }
+
         const data = await response.json();
-        const aiMessage = data.choices[0].message.content;
-        addMessage(aiMessage, 'bot');
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+            const aiMessage = data.choices[0].message.content;
+            addMessage(aiMessage, 'bot');
+        } else {
+            addMessage('Desculpe, recebi uma resposta inválida da IA.', 'bot');
+        }
     } catch (error) {
         console.error('Erro ao conectar com IA:', error);
-        addMessage('Desculpe, não consegui conectar com a IA. Tente novamente mais tarde.', 'bot');
+        
+        if (error.message.includes('Failed to fetch')) {
+            addMessage('Desculpe, não consegui conectar com a IA. Isso pode ser um problema de conexão ou restrição de segurança. Tente novamente mais tarde.', 'bot');
+        } else {
+            addMessage('Desculpe, ocorreu um erro ao processar sua mensagem. Tente novamente.', 'bot');
+        }
     }
 }
 
