@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LogiCodem - Inteligência aplicada ao código. Soluções tecnológicas seguras, eficientes e sob medida.">
-    <title>LogiCodem Solutions - Desenvolvimento de Software e Soluções Inteligentes</title>
+    <meta name="description" content="LogiCodem - Inteligência aplicada ao código. Soluções tecnológicas de ponta.">
+    <title>LogiCodem Solutions - Soluções Tecnológicas de Ponta</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-:root {
-    --primary-dark: #001a4d;
-    --primary-blue: #003d99;
-    --accent-gold: #d4af37;
-    --accent-light: #f5f5f5;
-    --white: #ffffff;
-    --text-dark: #1a1a1a;
-    --text-light: #666666;
-    --border-color: #e0e0e0;
-    --transition: all 0.3s ease;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --primary-dark: #0a0e27;
+    --primary-blue: #0f1b4d;
+    --accent-gold: #ffd700;
+    --accent-cyan: #00d4ff;
+    --accent-purple: #b300ff;
+    --white: #ffffff;
+    --text-dark: #1a1a1a;
+    --text-light: #999999;
 }
 
 html {
@@ -33,25 +32,194 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background-color: var(--white);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.header {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
-    padding: 1rem 0;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   ANIMAÇÕES GLOBAIS
+   ============================================ */
+@keyframes rocketLaunch {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
+
+@keyframes rocketFlame {
+    0%, 100% {
+        height: 40px;
+        opacity: 0.8;
+    }
+    50% {
+        height: 60px;
+        opacity: 1;
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.8), 0 0 60px rgba(179, 0, 255, 0.6);
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(179, 0, 255, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(179, 0, 255, 0.6), 0 0 60px rgba(255, 215, 0, 0.4);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* ============================================
+   ROCKET ANIMATION
+   ============================================ */
+.rocket-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+}
+
+.rocket {
+    position: absolute;
+    width: 60px;
+    height: 100px;
+    left: 50%;
+    bottom: -100px;
+    transform: translateX(-50%);
+    animation: rocketLaunch 3s ease-in-out forwards;
+}
+
+.rocket-body {
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+    border-radius: 50% 50% 20% 20%;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+}
+
+.rocket-window {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.rocket-fin {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid var(--accent-purple);
+}
+
+.rocket-fin-left {
+    left: -10px;
+    transform: skewY(20deg);
+}
+
+.rocket-fin-right {
+    right: -10px;
+    transform: skewY(-20deg);
+}
+
+.rocket-flame {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--accent-gold), var(--accent-cyan), transparent);
+    border-radius: 50% 50% 0 0;
+    animation: rocketFlame 0.3s ease-in-out infinite;
+    filter: blur(2px);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+    background: rgba(10, 14, 39, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 26, 77, 0.1);
+    border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
 }
 
 .header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,42 +231,56 @@ body {
     gap: 12px;
     cursor: pointer;
     text-decoration: none;
+    animation: floatUp 3s ease-in-out infinite;
 }
 
 .logo-img {
-    height: 40px;
+    height: 50px;
     width: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6));
 }
 
 .logo-text {
     color: var(--white);
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
 }
 
 .nav {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .nav-link {
     color: var(--white);
     text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
+    font-weight: 600;
     position: relative;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
 }
 
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: -8px;
     left: 0;
     width: 0;
-    height: 2px;
-    background: var(--accent-gold);
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold));
     transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+}
+
+.nav-link:hover {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
 }
 
 .nav-link:hover::after {
@@ -111,44 +293,26 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    gap: 5px;
+    gap: 6px;
 }
 
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background: var(--white);
+    background: var(--accent-cyan);
     border-radius: 2px;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 212, 255, 0.6);
 }
 
-.mobile-menu {
-    display: none;
-    flex-direction: column;
-    background: var(--primary-dark);
-    padding: 1rem;
-    gap: 1rem;
-}
-
-.mobile-nav-link {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-left: 3px solid transparent;
-    transition: var(--transition);
-}
-
-.mobile-nav-link:hover {
-    border-left-color: var(--accent-gold);
-    padding-left: 1.5rem;
-}
-
+/* ============================================
+   HERO SECTION
+   ============================================ */
 .hero {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.9) 0%, rgba(15, 27, 77, 0.9) 100%);
     color: var(--white);
-    padding: 100px 20px;
-    min-height: 600px;
+    padding: 150px 20px;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -156,223 +320,276 @@ body {
     overflow: hidden;
 }
 
-.hero-background {
+.hero::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 0.1;
-    z-index: 1;
-}
-
-.circuit-line {
-    position: absolute;
-    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-    opacity: 0.5;
-}
-
-.circuit-1 {
-    width: 200px;
-    height: 2px;
-    top: 20%;
-    left: 10%;
-    animation: float 6s ease-in-out infinite;
-}
-
-.circuit-2 {
-    width: 150px;
-    height: 2px;
-    top: 50%;
-    right: 15%;
-    animation: float 8s ease-in-out infinite;
-}
-
-.circuit-3 {
-    width: 180px;
-    height: 2px;
-    bottom: 20%;
-    left: 20%;
-    animation: float 7s ease-in-out infinite;
-}
-
-.circuit-dot {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: var(--accent-gold);
-    border-radius: 50%;
-    top: 30%;
-    right: 20%;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(20px); }
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.3); }
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(179, 0, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    max-width: 700px;
+    max-width: 900px;
+    animation: slideInLeft 1s ease-out;
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    animation: titleGlow 2s ease-in-out infinite;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+.hero-title span {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
     opacity: 0.95;
     line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    animation: slideInRight 1s ease-out;
 }
 
 .cta-button {
     display: inline-block;
-    background: var(--accent-gold);
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
     color: var(--primary-dark);
-    padding: 15px 40px;
+    padding: 18px 50px;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
+    border: 2px solid transparent;
+    cursor: pointer;
+    animation: floatUp 3s ease-in-out infinite;
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-    background: #e5c158;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.8), 0 0 30px rgba(179, 0, 255, 0.6);
+    border-color: var(--accent-cyan);
 }
 
+/* ============================================
+   SERVICES SECTION
+   ============================================ */
 .services {
-    padding: 80px 20px;
-    background: var(--accent-light);
+    padding: 100px 20px;
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 27, 77, 0.95) 100%);
+    position: relative;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     text-align: center;
-    margin-bottom: 0.5rem;
-    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    color: var(--white);
+    animation: titleGlow 2s ease-in-out infinite;
+    letter-spacing: 2px;
+}
+
+.section-title span {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .section-subtitle {
     text-align: center;
-    color: var(--text-light);
-    margin-bottom: 3rem;
-    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 4rem;
+    font-size: 1.3rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
 }
 
 .service-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 212, 255, 0.05) 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
     text-align: center;
-    transition: var(--transition);
-    box-shadow: 0 2px 10px rgba(0, 26, 77, 0.08);
-    border-top: 4px solid var(--primary-blue);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 26, 77, 0.15);
+    transform: translateY(-20px) scale(1.05);
+    border-color: var(--accent-gold);
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.1);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(179, 0, 255, 0.05) 100%);
+}
+
+.service-card:hover::before {
+    opacity: 1;
 }
 
 .service-icon {
-    font-size: 3rem;
-    color: var(--accent-gold);
-    margin-bottom: 1rem;
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
 }
 
 .service-card h3 {
-    color: var(--primary-dark);
+    color: var(--white);
     margin-bottom: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
 }
 
 .service-card p {
-    color: var(--text-light);
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
+    font-size: 1.05rem;
 }
 
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
 .about {
-    padding: 80px 20px;
-    background: var(--white);
+    padding: 100px 20px;
+    background: linear-gradient(135deg, rgba(15, 27, 77, 0.95) 0%, rgba(10, 14, 39, 0.95) 100%);
+    position: relative;
 }
 
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 4rem;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .about-text h2 {
-    color: var(--primary-dark);
-    margin-bottom: 1.5rem;
+    color: var(--white);
+    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+.about-text h2 span {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .about-description {
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2rem;
+    line-height: 1.9;
+    font-size: 1.1rem;
 }
 
 .about-features {
     display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
     flex-wrap: wrap;
 }
 
 .feature {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    color: var(--primary-dark);
-    font-weight: 600;
+    gap: 1rem;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.1rem;
 }
 
 .feature i {
-    font-size: 1.5rem;
-    color: var(--accent-gold);
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
 }
 
 .about-image {
     text-align: center;
+    position: relative;
 }
 
 .about-image img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 26, 77, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+    border: 3px solid rgba(0, 212, 255, 0.5);
+    animation: glowPulse 2s ease-in-out infinite;
 }
 
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
 .contact {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    padding: 100px 20px;
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 27, 77, 0.95) 100%);
     color: var(--white);
+    position: relative;
 }
 
 .contact .section-title {
@@ -380,46 +597,64 @@ body {
 }
 
 .contact .section-subtitle {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-top: 3rem;
+    gap: 4rem;
+    margin-top: 4rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .contact-item {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     align-items: flex-start;
+    padding: 1.5rem;
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 15px;
+    border-left: 4px solid var(--accent-cyan);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: rgba(0, 212, 255, 0.1);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
 }
 
 .contact-item i {
-    font-size: 2rem;
-    color: var(--accent-gold);
-    margin-top: 0.3rem;
+    font-size: 2.5rem;
+    color: var(--accent-cyan);
+    min-width: 50px;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6));
 }
 
 .contact-item h3 {
     margin-bottom: 0.5rem;
+    font-size: 1.3rem;
 }
 
 .contact-item a {
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
 }
 
 .contact-item a:hover {
     color: var(--accent-gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
 }
 
 .contact-form {
@@ -428,50 +663,60 @@ body {
     gap: 1.5rem;
 }
 
-.form-group {
-    display: flex;
-}
-
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 5px;
+    padding: 15px 20px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 10px;
     font-family: inherit;
     font-size: 1rem;
-    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    background: rgba(0, 212, 255, 0.05);
 }
 
 .submit-button {
-    background: var(--accent-gold);
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
     color: var(--primary-dark);
-    padding: 12px 30px;
+    padding: 15px 40px;
     border: none;
-    border-radius: 5px;
-    font-weight: 600;
-    font-size: 1rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: var(--transition);
-    align-self: flex-start;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
 }
 
 .submit-button:hover {
-    background: #e5c158;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6), 0 0 20px rgba(179, 0, 255, 0.4);
 }
 
+/* ============================================
+   FOOTER
+   ============================================ */
 .footer {
-    background: var(--primary-dark);
+    background: rgba(10, 14, 39, 0.98);
     color: var(--white);
-    padding: 2rem;
+    padding: 3rem 2rem;
     text-align: center;
+    border-top: 2px solid rgba(0, 212, 255, 0.3);
 }
 
 .footer-content {
@@ -479,27 +724,30 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .footer-section h3 {
     margin-bottom: 0.5rem;
-    color: var(--accent-gold);
+    color: var(--accent-cyan);
+    font-size: 1.3rem;
 }
 
 .footer-section p {
     opacity: 0.9;
+    font-size: 1.05rem;
 }
 
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
 @media (max-width: 768px) {
     .nav {
         display: none;
     }
 
     .menu-toggle {
-        display: flex;
-    }
-
-    .mobile-menu.active {
         display: flex;
     }
 
@@ -512,12 +760,12 @@ body {
     }
 
     .hero {
-        min-height: 400px;
-        padding: 60px 20px;
+        padding: 80px 20px;
+        min-height: auto;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .services-grid {
@@ -526,10 +774,12 @@ body {
 
     .about-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .contact-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .footer-content {
@@ -574,10 +824,6 @@ body {
         text-align: center;
     }
 
-    .contact-item i {
-        margin-top: 0;
-    }
-
     .submit-button {
         align-self: center;
     }
@@ -585,6 +831,9 @@ body {
     </style>
 </head>
 <body>
+    <!-- ROCKET ANIMATION -->
+    <div class="rocket-container" id="rocketContainer"></div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -604,52 +853,54 @@ body {
                 <span></span>
             </button>
         </div>
-        <nav class="mobile-menu" id="mobileMenu">
-            <a href="#inicio" class="mobile-nav-link">Início</a>
-            <a href="#servicos" class="mobile-nav-link">Serviços</a>
-            <a href="#sobre" class="mobile-nav-link">Sobre</a>
-            <a href="#contato" class="mobile-nav-link">Contato</a>
-        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
-        <div class="circuit-line circuit-1"></div>
-        <div class="circuit-line circuit-2"></div>
-        <div class="circuit-line circuit-3"></div>
-        <div class="circuit-dot"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Inteligência Aplicada ao Código</h1>
-            <p class="hero-subtitle">Transformamos ideias em soluções tecnológicas seguras, eficientes e escaláveis para impulsionar seu negócio.</p>
-            <a href="#contato" class="cta-button">Fale Conosco</a>
+            <h1 class="hero-title">
+                <span>Inteligência</span> Aplicada ao <span>Código</span>
+            </h1>
+            <p class="hero-subtitle">Transformamos ideias em soluções tecnológicas de ponta, seguras, eficientes e escaláveis para impulsionar seu negócio para o futuro.</p>
+            <a href="#contato" class="cta-button">🚀 Fale Conosco</a>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="servicos">
         <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <p class="section-subtitle">Soluções completas para transformar sua visão em realidade</p>
+            <h2 class="section-title">Nossos <span>Serviços</span></h2>
+            <p class="section-subtitle">Soluções completas e inovadoras para transformar sua visão em realidade</p>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-code"></i></div>
-                    <h3>Desenvolvimento de Sistemas Personalizados</h3>
-                    <p>Criamos sistemas sob medida que atendem às necessidades específicas do seu negócio, com arquitetura robusta e escalável.</p>
+                    <h3>Desenvolvimento de Sistemas</h3>
+                    <p>Criamos sistemas sob medida com arquitetura robusta, escalável e preparada para o futuro.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-globe"></i></div>
-                    <h3>Sistemas Web Modernos e Responsivos</h3>
-                    <p>Desenvolvemos aplicações web de alta performance, totalmente responsivas e otimizadas para todas as plataformas.</p>
+                    <h3>Sistemas Web Modernos</h3>
+                    <p>Aplicações web de alta performance, totalmente responsivas e otimizadas para todas as plataformas.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-robot"></i></div>
-                    <h3>Aplicativos e Automações</h3>
-                    <p>Automatizamos processos complexos e desenvolvemos aplicativos inteligentes que aumentam a produtividade.</p>
+                    <h3>Automações Inteligentes</h3>
+                    <p>Automatizamos processos complexos com inteligência artificial e machine learning.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-plug"></i></div>
                     <h3>Integrações e APIs</h3>
-                    <p>Integramos sistemas e desenvolvemos APIs robustas que conectam sua infraestrutura tecnológica de forma segura.</p>
+                    <p>APIs robustas e integrações seguras que conectam sua infraestrutura tecnológica.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Infraestrutura em nuvem escalável, segura e otimizada para máxima performance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Segurança Avançada</h3>
+                    <p>Proteção de dados com criptografia de ponta e compliance com padrões internacionais.</p>
                 </div>
             </div>
         </div>
@@ -657,30 +908,32 @@ body {
 
     <!-- About Section -->
     <section class="about" id="sobre">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">Sobre a LogiCodem</h2>
-                    <p class="about-description">A LogiCodem une <strong>lógica, código e inteligência</strong> para criar soluções tecnológicas seguras, eficientes e sob medida. Nosso objetivo é resolver problemas reais com tecnologia inteligente, estruturada e confiável.</p>
-                    <p class="about-description">Somos especialistas em desenvolvimento de software, sistemas web, automações e integrações de APIs. Cada projeto é tratado com excelência, focando em inovação, segurança e eficiência para impulsionar o crescimento do seu negócio.</p>
-                    <div class="about-features">
-                        <div class="feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Segurança</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>Eficiência</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-expand"></i>
-                            <span>Escalabilidade</span>
-                        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Sobre a <span>LogiCodem</span></h2>
+                <p class="about-description">A LogiCodem une <strong>lógica, código e inteligência</strong> para criar soluções tecnológicas de ponta, seguras, eficientes e sob medida. Nosso objetivo é resolver problemas reais com tecnologia inteligente, estruturada e confiável.</p>
+                <p class="about-description">Somos especialistas em desenvolvimento de software, sistemas web, automações e integrações de APIs. Cada projeto é tratado com excelência, focando em inovação, segurança e eficiência para impulsionar o crescimento exponencial do seu negócio.</p>
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Segurança</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Performance</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-expand"></i>
+                        <span>Escalabilidade</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-rocket"></i>
+                        <span>Inovação</span>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="PerfilWhatsapp.jpeg" alt="Equipe LogiCodem">
-                </div>
+            </div>
+            <div class="about-image">
+                <img src="PerfilWhatsapp.jpeg" alt="Equipe LogiCodem">
             </div>
         </div>
     </section>
@@ -688,8 +941,8 @@ body {
     <!-- Contact Section -->
     <section class="contact" id="contato">
         <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <p class="section-subtitle">Vamos conversar sobre como podemos ajudar seu negócio</p>
+            <h2 class="section-title">Entre em <span>Contato</span></h2>
+            <p class="section-subtitle">Vamos conversar sobre como podemos revolucionar seu negócio</p>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
@@ -706,6 +959,13 @@ body {
                             <a href="https://wa.me/5515991192202" target="_blank">(15) 99119-2202</a>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Localização</h3>
+                            <a href="#">São Paulo, Brasil</a>
+                        </div>
+                    </div>
                 </div>
                 <form class="contact-form">
                     <div class="form-group">
@@ -715,9 +975,9 @@ body {
                         <input type="email" placeholder="Seu Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                        <textarea placeholder="Sua Mensagem" rows="6" required></textarea>
                     </div>
-                    <button type="submit" class="submit-button">Enviar Mensagem</button>
+                    <button type="submit" class="submit-button">Enviar Mensagem 🚀</button>
                 </form>
             </div>
         </div>
@@ -725,34 +985,55 @@ body {
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>LogiCodem Solutions</h3>
-                    <p>Inteligência aplicada ao código</p>
-                </div>
-                <div class="footer-section">
-                    <p>&copy; 2024 LogiCodem Solutions. Todos os direitos reservados.</p>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>LogiCodem Solutions</h3>
+                <p>Inteligência aplicada ao código</p>
+            </div>
+            <div class="footer-section">
+                <p>&copy; 2024 LogiCodem Solutions. Todos os direitos reservados. 🚀</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // ROCKET ANIMATION ON PAGE LOAD
+        function launchRocket() {
+            const rocketContainer = document.getElementById('rocketContainer');
+            
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const rocket = document.createElement('div');
+                    rocket.className = 'rocket';
+                    rocket.innerHTML = `
+                        <div class="rocket-body">
+                            <div class="rocket-window"></div>
+                            <div class="rocket-fin rocket-fin-left"></div>
+                            <div class="rocket-fin rocket-fin-right"></div>
+                        </div>
+                        <div class="rocket-flame"></div>
+                    `;
+                    rocketContainer.appendChild(rocket);
+                    
+                    setTimeout(() => rocket.remove(), 3000);
+                }, i * 800);
+            }
+        }
+
+        // Launch rockets on page load
+        window.addEventListener('load', () => {
+            launchRocket();
+        });
+
+        // Launch rockets every 10 seconds
+        setInterval(launchRocket, 10000);
+
         // Menu Toggle
         const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenu = document.querySelector('.nav');
 
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-        });
-
-        // Fechar menu ao clicar em um link
-        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
         });
 
         // Smooth scroll para links de navegação
@@ -764,6 +1045,22 @@ body {
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.backgroundPosition = `0 ${scrolled * 0.5}px`;
+            }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Obrigado! Entraremos em contato em breve! 🚀');
+            e.target.reset();
         });
     </script>
 </body>
