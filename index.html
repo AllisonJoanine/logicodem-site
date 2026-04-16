@@ -175,6 +175,11 @@ header.scrolled {
     animation: floatSubtle 3s ease-in-out infinite;
 }
 
+.logo img {
+    height: 40px;
+    object-fit: contain;
+}
+
 .logo i {
     color: var(--accent-gold);
 }
@@ -790,7 +795,8 @@ footer p {
     <header id="header">
         <div class="header-content">
             <a href="#" class="logo">
-                <i class="fas fa-code"></i> LogiCodem
+                <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/LogiCodem-logo_solo.jpeg" alt="LogiCodem" style="height: 40px; margin-right: 10px;">
+                LogiCodem
             </a>
             <nav>
                 <a href="#inicio">Início</a>
@@ -804,6 +810,9 @@ footer p {
 
     <!-- HERO SECTION -->
     <section class="hero" id="inicio">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 40px;">
+            <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/LogiCodem-Logo.jpeg" alt="LogiCodem" style="height: 120px; object-fit: contain;">
+        </div>
         <h1>Soluções <span class="highlight">Tecnológicas</span> de Excelência</h1>
         <p>Transformamos desafios complexos em soluções elegantes. Desenvolvimento de software, sistemas web e automações inteligentes para empresas que buscam excelência.</p>
         <a href="#contato" class="hero-button">Solicitar Proposta</a>
@@ -873,7 +882,7 @@ footer p {
                 </div>
             </div>
             <div class="about-image">
-                <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/PerfilWhatsapp.jpeg" alt="Allison Joanine">
+                <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/PerfilWhatsapp.jpeg" alt="Allison Joanine" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);">
                 <div class="name">Allison Joanine</div>
                 <div class="title">CEO & Desenvolvedor</div>
             </div>
