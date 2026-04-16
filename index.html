@@ -5,15 +5,591 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="LogiCodem - Inteligência aplicada ao código. Soluções tecnológicas seguras, eficientes e sob medida.">
     <title>LogiCodem Solutions - Desenvolvimento de Software e Soluções Inteligentes</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+:root {
+    --primary-dark: #001a4d;
+    --primary-blue: #003d99;
+    --accent-gold: #d4af37;
+    --accent-light: #f5f5f5;
+    --white: #ffffff;
+    --text-dark: #1a1a1a;
+    --text-light: #666666;
+    --border-color: #e0e0e0;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 26, 77, 0.1);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.logo-text {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--primary-dark);
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.mobile-nav-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-left: 3px solid transparent;
+    transition: var(--transition);
+}
+
+.mobile-nav-link:hover {
+    border-left-color: var(--accent-gold);
+    padding-left: 1.5rem;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: var(--white);
+    padding: 100px 20px;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.circuit-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    opacity: 0.5;
+}
+
+.circuit-1 {
+    width: 200px;
+    height: 2px;
+    top: 20%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.circuit-2 {
+    width: 150px;
+    height: 2px;
+    top: 50%;
+    right: 15%;
+    animation: float 8s ease-in-out infinite;
+}
+
+.circuit-3 {
+    width: 180px;
+    height: 2px;
+    bottom: 20%;
+    left: 20%;
+    animation: float 7s ease-in-out infinite;
+}
+
+.circuit-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    top: 30%;
+    right: 20%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 700px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    line-height: 1.8;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    background: #e5c158;
+}
+
+.services {
+    padding: 80px 20px;
+    background: var(--accent-light);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(0, 26, 77, 0.08);
+    border-top: 4px solid var(--primary-blue);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 26, 77, 0.15);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.service-card p {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.about {
+    padding: 80px 20px;
+    background: var(--white);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+}
+
+.about-description {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.about-features {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+.feature i {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+}
+
+.about-image {
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 26, 77, 0.15);
+}
+
+.contact {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: var(--white);
+}
+
+.contact .section-title {
+    color: var(--white);
+}
+
+.contact .section-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.contact-item i {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-top: 0.3rem;
+}
+
+.contact-item h3 {
+    margin-bottom: 0.5rem;
+}
+
+.contact-item a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-item a:hover {
+    color: var(--accent-gold);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+}
+
+.submit-button {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    align-self: flex-start;
+}
+
+.submit-button:hover {
+    background: #e5c158;
+    transform: translateY(-2px);
+}
+
+.footer {
+    background: var(--primary-dark);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.footer-section h3 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-gold);
+}
+
+.footer-section p {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .mobile-menu.active {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero {
+        min-height: 400px;
+        padding: 60px 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-features {
+        justify-content: center;
+    }
+
+    .services,
+    .about,
+    .contact {
+        padding: 60px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .services-grid {
+        gap: 1.5rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-item i {
+        margin-top: 0;
+    }
+
+    .submit-button {
+        align-self: center;
+    }
+}
+    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="images/LogiCodem-logo_solo.jpeg" alt="LogiCodem Logo" class="logo-img">
+                <img src="LogiCodem-logo_solo.jpeg" alt="LogiCodem Logo" class="logo-img">
                 <span class="logo-text">LogiCodem</span>
             </div>
             <nav class="nav">
@@ -28,66 +604,50 @@
                 <span></span>
             </button>
         </div>
+        <nav class="mobile-menu" id="mobileMenu">
+            <a href="#inicio" class="mobile-nav-link">Início</a>
+            <a href="#servicos" class="mobile-nav-link">Serviços</a>
+            <a href="#sobre" class="mobile-nav-link">Sobre</a>
+            <a href="#contato" class="mobile-nav-link">Contato</a>
+        </nav>
     </header>
 
-    <!-- Mobile Menu -->
-    <nav class="mobile-menu" id="mobileMenu">
-        <a href="#inicio" class="mobile-nav-link">Início</a>
-        <a href="#servicos" class="mobile-nav-link">Serviços</a>
-        <a href="#sobre" class="mobile-nav-link">Sobre</a>
-        <a href="#contato" class="mobile-nav-link">Contato</a>
-    </nav>
-
     <!-- Hero Section -->
-    <section id="inicio" class="hero">
+    <section class="hero" id="inicio">
+        <div class="circuit-line circuit-1"></div>
+        <div class="circuit-line circuit-2"></div>
+        <div class="circuit-line circuit-3"></div>
+        <div class="circuit-dot"></div>
         <div class="hero-content">
             <h1 class="hero-title">Inteligência Aplicada ao Código</h1>
             <p class="hero-subtitle">Transformamos ideias em soluções tecnológicas seguras, eficientes e escaláveis para impulsionar seu negócio.</p>
             <a href="#contato" class="cta-button">Fale Conosco</a>
         </div>
-        <div class="hero-background">
-            <div class="circuit-line circuit-1"></div>
-            <div class="circuit-line circuit-2"></div>
-            <div class="circuit-line circuit-3"></div>
-            <div class="circuit-dot"></div>
-        </div>
     </section>
 
     <!-- Services Section -->
-    <section id="servicos" class="services">
+    <section class="services" id="servicos">
         <div class="container">
             <h2 class="section-title">Nossos Serviços</h2>
             <p class="section-subtitle">Soluções completas para transformar sua visão em realidade</p>
-            
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
                     <h3>Desenvolvimento de Sistemas Personalizados</h3>
                     <p>Criamos sistemas sob medida que atendem às necessidades específicas do seu negócio, com arquitetura robusta e escalável.</p>
                 </div>
-
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
                     <h3>Sistemas Web Modernos e Responsivos</h3>
                     <p>Desenvolvemos aplicações web de alta performance, totalmente responsivas e otimizadas para todas as plataformas.</p>
                 </div>
-
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
                     <h3>Aplicativos e Automações</h3>
                     <p>Automatizamos processos complexos e desenvolvemos aplicativos inteligentes que aumentam a produtividade.</p>
                 </div>
-
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-plug"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-plug"></i></div>
                     <h3>Integrações e APIs</h3>
                     <p>Integramos sistemas e desenvolvemos APIs robustas que conectam sua infraestrutura tecnológica de forma segura.</p>
                 </div>
@@ -96,24 +656,20 @@
     </section>
 
     <!-- About Section -->
-    <section id="sobre" class="about">
+    <section class="about" id="sobre">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
                     <h2 class="section-title">Sobre a LogiCodem</h2>
-                    <p class="about-description">
-                        A LogiCodem une <strong>lógica, código e inteligência</strong> para criar soluções tecnológicas seguras, eficientes e sob medida. Nosso objetivo é resolver problemas reais com tecnologia inteligente, estruturada e confiável.
-                    </p>
-                    <p class="about-description">
-                        Somos especialistas em desenvolvimento de software, sistemas web, automações e integrações de APIs. Cada projeto é tratado com excelência, focando em inovação, segurança e eficiência para impulsionar o crescimento do seu negócio.
-                    </p>
+                    <p class="about-description">A LogiCodem une <strong>lógica, código e inteligência</strong> para criar soluções tecnológicas seguras, eficientes e sob medida. Nosso objetivo é resolver problemas reais com tecnologia inteligente, estruturada e confiável.</p>
+                    <p class="about-description">Somos especialistas em desenvolvimento de software, sistemas web, automações e integrações de APIs. Cada projeto é tratado com excelência, focando em inovação, segurança e eficiência para impulsionar o crescimento do seu negócio.</p>
                     <div class="about-features">
                         <div class="feature">
                             <i class="fas fa-shield-alt"></i>
                             <span>Segurança</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-bolt"></i>
+                            <i class="fas fa-tachometer-alt"></i>
                             <span>Eficiência</span>
                         </div>
                         <div class="feature">
@@ -123,18 +679,17 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="images/PerfilWhatsapp.jpeg" alt="Equipe LogiCodem">
+                    <img src="PerfilWhatsapp.jpeg" alt="Equipe LogiCodem">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contato" class="contact">
+    <section class="contact" id="contato">
         <div class="container">
             <h2 class="section-title">Entre em Contato</h2>
             <p class="section-subtitle">Vamos conversar sobre como podemos ajudar seu negócio</p>
-            
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
@@ -145,14 +700,14 @@
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-whatsapp"></i>
                         <div>
                             <h3>WhatsApp</h3>
                             <a href="https://wa.me/5515991192202" target="_blank">(15) 99119-2202</a>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form">
                     <div class="form-group">
                         <input type="text" placeholder="Seu Nome" required>
                     </div>
@@ -173,7 +728,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>LogiCodem</h3>
+                    <h3>LogiCodem Solutions</h3>
                     <p>Inteligência aplicada ao código</p>
                 </div>
                 <div class="footer-section">
@@ -183,6 +738,33 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
