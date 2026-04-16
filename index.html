@@ -48,33 +48,10 @@ body {
     0% { bottom: -100px; opacity: 0; }
     10% { opacity: 1; }
     50% { bottom: 50vh; }
-    90% { opacity: 1; }
+    60% { bottom: 50vh; transform: translateY(-10px); }
+    70% { bottom: 50vh; transform: translateY(10px); }
+    80% { bottom: 50vh; transform: translateY(-5px); }
     100% { bottom: 100vh; opacity: 0; }
-}
-
-@keyframes rocketFloat {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-@keyframes eyesFollow {
-    0% { transform: translate(0, 0); }
-}
-
-@keyframes fireFlame {
-    0%, 100% { height: 40px; opacity: 0.8; }
-    50% { height: 60px; opacity: 1; }
-}
-
-@keyframes subtleGlow {
-    0%, 100% { box-shadow: 0 4px 15px rgba(201, 169, 97, 0.08); }
-    50% { box-shadow: 0 8px 25px rgba(201, 169, 97, 0.15); }
-}
-
-@keyframes borderAnimation {
-    0% { border-color: rgba(201, 169, 97, 0.2); }
-    50% { border-color: rgba(201, 169, 97, 0.5); }
-    100% { border-color: rgba(201, 169, 97, 0.2); }
 }
 
 @keyframes floatSubtle {
@@ -82,86 +59,27 @@ body {
     50% { transform: translateY(-10px); }
 }
 
-/* ROCKET STYLES */
-.rocket-container {
-    position: fixed;
-    bottom: -100px;
-    right: 50px;
-    z-index: 9999;
-    animation: rocketLaunch 4s ease-in-out forwards;
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-.rocket {
-    width: 60px;
-    height: 80px;
-    background: linear-gradient(135deg, #c9a961 0%, #d4af7a 100%);
-    border-radius: 50% 50% 10% 10%;
-    position: relative;
-    animation: rocketFloat 2s ease-in-out infinite;
-    box-shadow: 0 0 30px rgba(201, 169, 97, 0.6);
-}
-
-.rocket::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 20px solid #c9a961;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -15px;
-}
-
-.rocket::after {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 30px;
-    background: #ff6b35;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -30px;
-    border-radius: 50% 50% 0 0;
-    animation: fireFlame 0.3s ease-in-out infinite;
-    box-shadow: 0 0 20px #ff6b35;
-}
-
-.rocket-window {
-    width: 20px;
-    height: 20px;
-    background: #051119;
-    border-radius: 50%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 15px;
-    border: 2px solid #d4af7a;
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 10px rgba(201, 169, 97, 0.3); }
+    50% { text-shadow: 0 0 20px rgba(201, 169, 97, 0.6); }
 }
 
 /* HEADER */
 header {
     background: var(--white);
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
-
-header.scrolled {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -180,17 +98,17 @@ header.scrolled {
     object-fit: contain;
 }
 
-.logo i {
-    color: var(--accent-gold);
+nav {
+    display: flex;
+    gap: 40px;
 }
 
 nav a {
     color: var(--text-dark);
     text-decoration: none;
-    margin: 0 25px;
     font-weight: 500;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 nav a::after {
@@ -201,7 +119,7 @@ nav a::after {
     width: 0;
     height: 2px;
     background: var(--accent-gold);
-    transition: width 0.3s ease;
+    transition: width 0.3s;
 }
 
 nav a:hover::after {
@@ -215,103 +133,121 @@ nav a:hover::after {
     border-radius: 5px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     border: 2px solid var(--primary-dark);
 }
 
 .cta-button:hover {
     background: transparent;
     color: var(--primary-dark);
-    box-shadow: 0 4px 15px rgba(13, 27, 42, 0.2);
+    box-shadow: 0 0 15px rgba(201, 169, 97, 0.3);
 }
 
-/* HERO SECTION */
+/* HERO */
 .hero {
-    background: linear-gradient(135deg, var(--white) 0%, #f5f5f5 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
     padding: 100px 40px;
     text-align: center;
-    animation: fadeInUp 0.8s ease-out;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-logo {
+    height: 150px;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease;
 }
 
 .hero h1 {
-    font-size: 56px;
-    color: var(--primary-dark);
+    font-size: 48px;
     margin-bottom: 20px;
-    line-height: 1.2;
+    color: var(--primary-dark);
+    animation: fadeInUp 0.8s ease 0.2s backwards;
 }
 
-.hero h1 .highlight {
+.hero .highlight {
     color: var(--accent-gold);
+    animation: glow 2s ease-in-out infinite;
 }
 
 .hero p {
     font-size: 18px;
     color: var(--text-light);
     max-width: 600px;
-    margin: 0 auto 40px;
-    line-height: 1.8;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease 0.4s backwards;
 }
 
 .hero-button {
-    display: inline-block;
     background: var(--primary-dark);
     color: var(--white);
-    padding: 16px 40px;
+    padding: 15px 50px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
+    font-size: 16px;
+    transition: all 0.3s;
+    display: inline-block;
     border: 2px solid var(--primary-dark);
-    animation: subtleGlow 2s ease-in-out infinite;
+    animation: fadeInUp 0.8s ease 0.6s backwards;
 }
 
 .hero-button:hover {
     background: transparent;
     color: var(--primary-dark);
-    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(201, 169, 97, 0.4);
 }
 
-/* SERVICES SECTION */
+/* SERVICES */
 .services {
-    max-width: 1200px;
-    margin: 100px auto;
-    padding: 0 40px;
+    padding: 100px 40px;
+    background: var(--white);
 }
 
-.section-title {
+.services h2 {
     text-align: center;
     font-size: 42px;
     margin-bottom: 60px;
     color: var(--primary-dark);
 }
 
-.section-title .highlight {
+.services h2 .highlight {
     color: var(--accent-gold);
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .service-card {
     background: var(--white);
     padding: 40px;
     border-radius: 8px;
-    border: 2px solid var(--border-light);
+    border: 1px solid var(--border-light);
     text-align: center;
-    transition: all 0.3s ease;
-    animation: fadeInUp 0.8s ease-out;
-    animation-fill-mode: both;
+    transition: all 0.3s;
+    animation: fadeInUp 0.8s ease;
 }
-
-.service-card:nth-child(1) { animation-delay: 0.1s; }
-.service-card:nth-child(2) { animation-delay: 0.2s; }
-.service-card:nth-child(3) { animation-delay: 0.3s; }
-.service-card:nth-child(4) { animation-delay: 0.4s; }
-.service-card:nth-child(5) { animation-delay: 0.5s; }
-.service-card:nth-child(6) { animation-delay: 0.6s; }
 
 .service-card:hover {
     border-color: var(--accent-gold);
@@ -319,7 +255,7 @@ nav a:hover::after {
     transform: translateY(-5px);
 }
 
-.service-icon {
+.service-card i {
     font-size: 48px;
     color: var(--accent-gold);
     margin-bottom: 20px;
@@ -333,48 +269,45 @@ nav a:hover::after {
 
 .service-card p {
     color: var(--text-light);
-    font-size: 14px;
     line-height: 1.8;
 }
 
-/* ABOUT SECTION */
+/* ABOUT */
 .about {
-    background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
     padding: 100px 40px;
-    margin-top: 100px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
 }
 
-.about-content {
-    max-width: 1200px;
-    margin: 0 auto;
+.about-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
     align-items: center;
 }
 
-.about-text h2 {
+.about h2 {
     font-size: 42px;
     margin-bottom: 30px;
     color: var(--primary-dark);
 }
 
-.about-text h2 .highlight {
+.about h2 .highlight {
     color: var(--accent-gold);
 }
 
-.about-text p {
+.about p {
+    font-size: 16px;
     color: var(--text-light);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     line-height: 1.8;
-    font-size: 15px;
 }
 
-.about-pillars {
+.pillars {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-top: 40px;
 }
 
 .pillar {
@@ -390,46 +323,45 @@ nav a:hover::after {
     font-size: 16px;
 }
 
+.pillar i {
+    color: var(--accent-gold);
+    margin-right: 10px;
+}
+
 .pillar p {
-    color: var(--text-lighter);
-    font-size: 13px;
+    margin: 0;
+    font-size: 14px;
 }
 
 .about-image {
     text-align: center;
-    position: relative;
 }
 
 .about-image img {
-    width: 100%;
-    max-width: 400px;
+    max-width: 100%;
+    height: auto;
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-.about-image .name {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 600;
+.name {
+    font-size: 24px;
+    font-weight: bold;
     color: var(--primary-dark);
+    margin-bottom: 5px;
 }
 
-.about-image .title {
+.title {
     color: var(--accent-gold);
-    font-size: 14px;
-    margin-top: 5px;
+    font-weight: 600;
 }
 
-/* CONTACT SECTION */
+/* CONTACT */
 .contact {
+    padding: 100px 40px;
     background: var(--primary-dark);
     color: var(--white);
-    padding: 100px 40px;
-}
-
-.contact-content {
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .contact h2 {
@@ -444,232 +376,200 @@ nav a:hover::after {
 
 .contact-subtitle {
     text-align: center;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
     margin-bottom: 60px;
-    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-.contact-grid {
+.contact-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
     gap: 40px;
-    margin-bottom: 60px;
 }
 
 .contact-item {
-    text-align: center;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
 }
 
 .contact-item i {
-    font-size: 36px;
+    font-size: 32px;
     color: var(--accent-gold);
-    margin-bottom: 15px;
+    flex-shrink: 0;
 }
 
 .contact-item h3 {
-    margin-bottom: 10px;
     font-size: 18px;
+    margin-bottom: 5px;
 }
 
 .contact-item a {
-    color: var(--accent-gold);
+    color: var(--accent-light-gold);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 .contact-item a:hover {
     color: var(--white);
 }
 
-.form-container {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 40px;
-    border-radius: 8px;
-    border: 1px solid rgba(201, 169, 97, 0.2);
-    max-width: 600px;
-    margin: 0 auto;
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid rgba(201, 169, 97, 0.3);
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.1);
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 2px solid var(--secondary-dark);
+    border-radius: 5px;
+    background: transparent;
     color: var(--white);
     font-family: inherit;
-    transition: all 0.3s ease;
+    font-size: 16px;
+    transition: border-color 0.3s;
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.contact-form input:focus,
+.contact-form textarea:focus {
     outline: none;
     border-color: var(--accent-gold);
-    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(201, 169, 97, 0.3);
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.submit-button {
-    width: 100%;
-    padding: 14px;
+.contact-form button {
+    padding: 15px;
     background: var(--accent-gold);
     color: var(--primary-dark);
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
     font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-.submit-button:hover {
+.contact-form button:hover {
     background: var(--accent-light-gold);
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(201, 169, 97, 0.3);
+    box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
 }
 
 /* FOOTER */
 footer {
     background: var(--primary-darker);
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--white);
     text-align: center;
     padding: 40px;
-    border-top: 1px solid rgba(201, 169, 97, 0.2);
+    border-top: 1px solid var(--secondary-dark);
 }
 
 footer h3 {
-    color: var(--white);
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 footer p {
-    font-size: 14px;
-    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
 }
 
-/* CHATBOT STYLES */
+/* ROCKET */
+.rocket {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 60px;
+    animation: rocketLaunch 4s ease-in-out forwards;
+    z-index: 999;
+    pointer-events: none;
+}
+
+/* CHATBOT */
 .chatbot-container {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 999;
-    font-family: 'Segoe UI', sans-serif;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    font-family: inherit;
 }
 
 .chatbot-toggle {
     width: 60px;
     height: 60px;
+    border-radius: 50%;
     background: var(--accent-gold);
     border: none;
-    border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 28px;
     color: var(--primary-dark);
-    box-shadow: 0 4px 15px rgba(201, 169, 97, 0.4);
-    transition: all 0.3s ease;
-    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s;
 }
 
 .chatbot-toggle:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(201, 169, 97, 0.6);
-}
-
-.mascot {
-    position: absolute;
-    bottom: 70px;
-    right: 0;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(201, 169, 97, 0.3);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.mascot.show {
-    opacity: 1;
-}
-
-.mascot-eyes {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.eye {
-    width: 12px;
-    height: 12px;
-    background: var(--primary-dark);
-    border-radius: 50%;
-    position: relative;
-}
-
-.pupil {
-    width: 6px;
-    height: 6px;
-    background: var(--white);
-    border-radius: 50%;
-    position: absolute;
-    top: 3px;
-    left: 3px;
+    box-shadow: 0 6px 20px rgba(201, 169, 97, 0.4);
 }
 
 .chatbot-window {
     position: absolute;
     bottom: 80px;
     right: 0;
-    width: 350px;
-    height: 500px;
+    width: 400px;
+    height: 600px;
     background: var(--white);
     border-radius: 12px;
     box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
     display: none;
     flex-direction: column;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.3s ease;
-    z-index: 1001;
+    overflow: hidden;
+    animation: slideInLeft 0.3s ease;
 }
 
 .chatbot-window.active {
     display: flex;
-    opacity: 1;
-    transform: scale(1);
 }
 
 .chatbot-header {
     background: var(--primary-dark);
     color: var(--white);
     padding: 20px;
-    border-radius: 12px 12px 0 0;
-    text-align: center;
-    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.chatbot-close {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .chatbot-messages {
@@ -678,81 +578,138 @@ footer p {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .message {
-    padding: 10px 15px;
-    border-radius: 8px;
-    max-width: 80%;
-    word-wrap: break-word;
+    display: flex;
+    gap: 10px;
     animation: fadeInUp 0.3s ease;
 }
 
 .message.user {
-    background: var(--primary-dark);
-    color: var(--white);
-    align-self: flex-end;
+    justify-content: flex-end;
 }
 
 .message.bot {
-    background: #f0f0f0;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.message-content {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    word-wrap: break-word;
+}
+
+.message.user .message-content {
+    background: var(--primary-dark);
+    color: var(--white);
+}
+
+.message.bot .message-content {
+    background: var(--border-light);
     color: var(--text-dark);
-    align-self: flex-start;
 }
 
-.chatbot-input-area {
-    padding: 15px;
-    border-top: 1px solid var(--border-light);
-    display: flex;
-    gap: 10px;
-}
-
-.chatbot-input-area input {
-    flex: 1;
-    padding: 10px 15px;
-    border: 1px solid var(--border-light);
-    border-radius: 20px;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-.chatbot-input-area input:focus {
-    outline: none;
-    border-color: var(--accent-gold);
-    box-shadow: 0 0 10px rgba(201, 169, 97, 0.2);
-}
-
-.chatbot-send {
+.mascot {
+    width: 50px;
+    height: 50px;
     background: var(--accent-gold);
-    border: none;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-dark);
-    transition: all 0.3s ease;
+    position: relative;
+    flex-shrink: 0;
 }
 
-.chatbot-send:hover {
+.mascot::before,
+.mascot::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-dark);
+    border-radius: 50%;
+    top: 18px;
+}
+
+.mascot::before {
+    left: 12px;
+}
+
+.mascot::after {
+    right: 12px;
+}
+
+.mascot-pupil {
+    width: 6px;
+    height: 6px;
+    background: var(--primary-dark);
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+}
+
+.mascot-pupil.left {
+    left: 15px;
+}
+
+.mascot-pupil.right {
+    right: 15px;
+}
+
+.chatbot-input {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    border-top: 1px solid var(--border-light);
+    background: var(--white);
+}
+
+.chatbot-input input {
+    flex: 1;
+    border: 1px solid var(--border-light);
+    border-radius: 5px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.chatbot-input input:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+.chatbot-input button {
+    background: var(--accent-gold);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary-dark);
+    transition: all 0.3s;
+}
+
+.chatbot-input button:hover {
     background: var(--accent-light-gold);
-    transform: scale(1.1);
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .header-content {
+    header {
         flex-direction: column;
         gap: 20px;
-        padding: 0 20px;
+        padding: 15px;
     }
 
-    nav a {
-        margin: 0 15px;
-        font-size: 14px;
+    nav {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .hero {
@@ -760,59 +717,60 @@ footer p {
     }
 
     .hero h1 {
-        font-size: 36px;
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
     }
 
     .services {
-        padding: 0 20px;
+        padding: 60px 20px;
     }
 
-    .about-content {
+    .about-container {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
-    .chatbot-window {
-        width: 280px;
-        height: 400px;
+    .contact-container {
+        grid-template-columns: 1fr;
     }
 
-    .rocket-container {
-        right: 20px;
+    .chatbot-window {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+        max-width: 100vw;
+        max-height: 100vh;
     }
 }
     </style>
 </head>
 <body>
     <!-- ROCKET ANIMATION -->
-    <div class="rocket-container" id="rocketContainer">
-        <div class="rocket">
-            <div class="rocket-window"></div>
-        </div>
-    </div>
+    <div class="rocket">🚀</div>
 
     <!-- HEADER -->
     <header id="header">
-        <div class="header-content">
-            <a href="#" class="logo">
-                <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/LogiCodem-logo_solo.jpeg" alt="LogiCodem" style="height: 40px; margin-right: 10px;">
-                LogiCodem
-            </a>
-            <nav>
-                <a href="#inicio">Início</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#contato">Contato</a>
-            </nav>
-            <a href="#contato" class="cta-button">Solicitar Proposta</a>
-        </div>
+        <a href="#" class="logo">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230d1b2a;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23051119;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='200' height='200' fill='url(%23grad)' rx='10'/%3E%3Ctext x='100' y='120' font-size='80' font-weight='bold' fill='%23c9a961' text-anchor='middle' font-family='Arial'%3ELC%3C/text%3E%3C/svg%3E" alt="LogiCodem" style="height: 40px; margin-right: 10px;">
+            LogiCodem
+        </a>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <a href="#contato" class="cta-button">Solicitar Proposta</a>
     </header>
 
     <!-- HERO SECTION -->
     <section class="hero" id="inicio">
-        <div style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 40px;">
-            <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/LogiCodem-Logo.jpeg" alt="LogiCodem" style="height: 120px; object-fit: contain;">
-        </div>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Cdefs%3E%3ClinearGradient id='grad2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230d1b2a;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23051119;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='200' y='140' font-size='120' font-weight='bold' fill='%23c9a961' text-anchor='middle' font-family='Arial'%3ELC%3C/text%3E%3C/svg%3E" alt="LogiCodem" class="hero-logo">
         <h1>Soluções <span class="highlight">Tecnológicas</span> de Excelência</h1>
         <p>Transformamos desafios complexos em soluções elegantes. Desenvolvimento de software, sistemas web e automações inteligentes para empresas que buscam excelência.</p>
         <a href="#contato" class="hero-button">Solicitar Proposta</a>
@@ -820,35 +778,35 @@ footer p {
 
     <!-- SERVICES SECTION -->
     <section class="services" id="servicos">
-        <h2 class="section-title">Nossos <span class="highlight">Serviços</span></h2>
+        <h2>Nossos <span class="highlight">Serviços</span></h2>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <i class="fas fa-code"></i>
                 <h3>Desenvolvimento de Software</h3>
                 <p>Sistemas robustos e escaláveis desenvolvidos com as melhores práticas de engenharia de software e arquitetura corporativa.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-globe"></i></div>
+                <i class="fas fa-globe"></i>
                 <h3>Sistemas Web Corporativos</h3>
                 <p>Plataformas web de alta performance, seguras e totalmente responsivas para empresas modernas.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                <i class="fas fa-cogs"></i>
                 <h3>Automações Inteligentes</h3>
                 <p>Processos automatizados que aumentam produtividade e reduzem custos operacionais significativamente.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-plug"></i></div>
+                <i class="fas fa-plug"></i>
                 <h3>Integrações e APIs</h3>
                 <p>Conectamos seus sistemas com segurança e eficiência através de APIs robustas e bem documentadas.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-camera"></i></div>
+                <i class="fas fa-camera"></i>
                 <h3>Câmeras de Segurança com IA</h3>
                 <p>Sistemas de vigilância inteligentes com reconhecimento de padrões e análise em tempo real para máxima segurança.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                <i class="fas fa-cloud"></i>
                 <h3>Soluções em Cloud</h3>
                 <p>Infraestrutura escalável e segura na nuvem para garantir disponibilidade e performance dos seus sistemas.</p>
             </div>
@@ -857,12 +815,12 @@ footer p {
 
     <!-- ABOUT SECTION -->
     <section class="about" id="sobre">
-        <div class="about-content">
-            <div class="about-text">
+        <div class="about-container">
+            <div>
                 <h2>Sobre a <span class="highlight">LogiCodem</span></h2>
                 <p>A LogiCodem é especializada em criar soluções tecnológicas que combinam inovação, segurança e eficiência. Nosso compromisso é entregar projetos de excelência que impulsionam o crescimento do seu negócio.</p>
                 <p>Trabalhamos com as melhores práticas de desenvolvimento, garantindo código limpo, bem documentado e fácil de manter. Cada projeto é uma oportunidade de demonstrar nossa dedicação à qualidade.</p>
-                <div class="about-pillars">
+                <div class="pillars">
                     <div class="pillar">
                         <h4><i class="fas fa-shield-alt"></i> Segurança</h4>
                         <p>Proteção de dados com os mais altos padrões</p>
@@ -882,51 +840,60 @@ footer p {
                 </div>
             </div>
             <div class="about-image">
-                <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/PerfilWhatsapp.jpeg" alt="Allison Joanine" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);">
-                <div class="name">Allison Joanine</div>
-                <div class="title">CEO & Desenvolvedor</div>
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);">
+                    <defs>
+                        <linearGradient id='bgGrad' x1='0%' y1='0%' x2='100%' y2='100%'>
+                            <stop offset='0%' style='stop-color:%23e8e8e8;stop-opacity:1' />
+                            <stop offset='100%' style='stop-color:%23f5f5f5;stop-opacity:1' />
+                        </linearGradient>
+                    </defs>
+                    <rect width='300' height='400' fill='url(%23bgGrad)'/>
+                    <circle cx='150' cy='150' r='80' fill='%23d4af7a'/>
+                    <circle cx='150' cy='150' r='75' fill='%23c0a060'/>
+                    <circle cx='130' cy='140' r='12' fill='%23051119'/>
+                    <circle cx='170' cy='140' r='12' fill='%23051119'/>
+                    <circle cx='150' cy='180' r='8' fill='%23051119'/>
+                    <text x='150' y='320' font-size='24' font-weight='bold' fill='%230d1b2a' text-anchor='middle' font-family='Arial'>Allison Joanine</text>
+                    <text x='150' y='350' font-size='16' fill='%23c9a961' text-anchor='middle' font-family='Arial'>CEO & Desenvolvedor</text>
+                </svg>
             </div>
         </div>
     </section>
 
     <!-- CONTACT SECTION -->
     <section class="contact" id="contato">
-        <div class="contact-content">
-            <h2>Vamos <span class="highlight">Conversar</span></h2>
-            <p class="contact-subtitle">Estamos prontos para transformar sua visão em realidade</p>
-            
-            <div class="contact-grid">
+        <h2>Vamos <span class="highlight">Conversar</span></h2>
+        <p class="contact-subtitle">Estamos prontos para transformar sua visão em realidade</p>
+        <div class="contact-container">
+            <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <a href="mailto:logicodem@gmail.com">logicodem@gmail.com</a>
+                    <div>
+                        <h3>Email</h3>
+                        <a href="mailto:logicodem@gmail.com">logicodem@gmail.com</a>
+                    </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-whatsapp"></i>
-                    <h3>WhatsApp</h3>
-                    <a href="https://wa.me/5515991192202" target="_blank">(15) 99119-2202</a>
+                    <div>
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/5515991192202" target="_blank">(15) 99119-2202</a>
+                    </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h3>Localização</h3>
-                    <a href="#">São Paulo, Brasil</a>
+                    <div>
+                        <h3>Localização</h3>
+                        <p>São Paulo, Brasil</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="form-container">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="Seu Nome" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="Seu Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" placeholder="Sua Mensagem" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Enviar Mensagem</button>
-                </form>
-            </div>
+            <form class="contact-form" id="contactForm">
+                <input type="text" id="name" placeholder="Seu Nome" required>
+                <input type="email" id="email" placeholder="Seu Email" required>
+                <textarea id="message" placeholder="Sua Mensagem" rows="6" required></textarea>
+                <button type="submit">Enviar Mensagem</button>
+            </form>
         </div>
     </section>
 
@@ -939,29 +906,16 @@ footer p {
 
     <!-- CHATBOT -->
     <div class="chatbot-container">
-        <div class="mascot" id="mascot">
-            <div class="mascot-eyes">
-                <div class="eye">
-                    <div class="pupil"></div>
-                </div>
-                <div class="eye">
-                    <div class="pupil"></div>
-                </div>
-            </div>
-        </div>
-        <button class="chatbot-toggle" id="chatbotToggle">
-            <i class="fas fa-comments"></i>
-        </button>
+        <button class="chatbot-toggle" id="chatbotToggle">💬</button>
         <div class="chatbot-window" id="chatbotWindow">
             <div class="chatbot-header">
-                LogiCodem Assistant
+                <h3>Assistente LogiCodem</h3>
+                <button class="chatbot-close" id="chatbotClose">&times;</button>
             </div>
             <div class="chatbot-messages" id="chatbotMessages"></div>
-            <div class="chatbot-input-area">
+            <div class="chatbot-input">
                 <input type="text" id="chatbotInput" placeholder="Digite sua mensagem...">
-                <button class="chatbot-send" id="chatbotSend">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+                <button id="chatbotSend">Enviar</button>
             </div>
         </div>
     </div>
@@ -969,68 +923,95 @@ footer p {
     <script>
 const OPENAI_API_KEY = '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';
 
-// Rocket Animation
-window.addEventListener('load', () => {
-    const rocketContainer = document.getElementById('rocketContainer');
-    rocketContainer.style.display = 'block';
-    setTimeout(() => {
-        rocketContainer.style.display = 'none';
-    }, 4000);
-});
-
-// Scroll Header Effect
-window.addEventListener('scroll', () => {
-    const header = document.getElementById('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
-// Chatbot Toggle
+// Chatbot Elements
 const chatbotToggle = document.getElementById('chatbotToggle');
 const chatbotWindow = document.getElementById('chatbotWindow');
-const mascot = document.getElementById('mascot');
-
-chatbotToggle.addEventListener('click', () => {
-    chatbotWindow.classList.toggle('active');
-    mascot.classList.toggle('show');
-});
-
-// Mouse Tracking for Mascot Eyes
-document.addEventListener('mousemove', (e) => {
-    const mascotRect = mascot.getBoundingClientRect();
-    const mascotCenterX = mascotRect.left + mascotRect.width / 2;
-    const mascotCenterY = mascotRect.top + mascotRect.height / 2;
-
-    const angle = Math.atan2(e.clientY - mascotCenterY, e.clientX - mascotCenterX);
-    const distance = 3;
-
-    const pupils = document.querySelectorAll('.pupil');
-    pupils.forEach(pupil => {
-        const x = Math.cos(angle) * distance;
-        const y = Math.sin(angle) * distance;
-        pupil.style.transform = `translate(${x}px, ${y}px)`;
-    });
-});
-
-// Chatbot Functionality
+const chatbotClose = document.getElementById('chatbotClose');
+const chatbotMessages = document.getElementById('chatbotMessages');
 const chatbotInput = document.getElementById('chatbotInput');
 const chatbotSend = document.getElementById('chatbotSend');
-const chatbotMessages = document.getElementById('chatbotMessages');
 
-async function sendChatbotMessage() {
-    const userMessage = chatbotInput.value.trim();
-    if (!userMessage) return;
+// Toggle Chatbot
+chatbotToggle.addEventListener('click', () => {
+    chatbotWindow.classList.toggle('active');
+});
+
+chatbotClose.addEventListener('click', () => {
+    chatbotWindow.classList.remove('active');
+});
+
+// Send Message
+chatbotSend.addEventListener('click', sendMessage);
+chatbotInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
+function sendMessage() {
+    const message = chatbotInput.value.trim();
+    if (!message) return;
 
     // Add user message
-    const userMessageEl = document.createElement('div');
-    userMessageEl.className = 'message user';
-    userMessageEl.textContent = userMessage;
-    chatbotMessages.appendChild(userMessageEl);
+    addMessage(message, 'user');
     chatbotInput.value = '';
+
+    // Get AI response
+    getAIResponse(message);
+}
+
+function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}`;
+
+    if (sender === 'bot') {
+        const mascot = document.createElement('div');
+        mascot.className = 'mascot';
+        
+        const leftPupil = document.createElement('div');
+        leftPupil.className = 'mascot-pupil left';
+        
+        const rightPupil = document.createElement('div');
+        rightPupil.className = 'mascot-pupil right';
+        
+        mascot.appendChild(leftPupil);
+        mascot.appendChild(rightPupil);
+
+        // Track mouse for eye movement
+        document.addEventListener('mousemove', (e) => {
+            const mascotRect = mascot.getBoundingClientRect();
+            const mascotCenterX = mascotRect.left + mascotRect.width / 2;
+            const mascotCenterY = mascotRect.top + mascotRect.height / 2;
+
+            const angle = Math.atan2(e.clientY - mascotCenterY, e.clientX - mascotCenterX);
+            const distance = 6;
+
+            const pupils = mascot.querySelectorAll('.mascot-pupil');
+            pupils.forEach(pupil => {
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                pupil.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        messageDiv.appendChild(mascot);
+    }
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+    contentDiv.textContent = text;
+    messageDiv.appendChild(contentDiv);
+
+    chatbotMessages.appendChild(messageDiv);
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+async function getAIResponse(userMessage) {
+    const systemPrompt = `Você é um assistente de IA da LogiCodem Solutions. Responda APENAS sobre:
+1. A empresa LogiCodem Solutions
+2. Seus serviços: Desenvolvimento de Software, Sistemas Web, Automações, Integrações de APIs, Câmeras de Segurança com IA, Soluções em Cloud
+3. Allison Joanine - CEO e Desenvolvedor da LogiCodem
+4. Informações de contato: logicodem@gmail.com, (15) 99119-2202
+
+Se a pergunta não for sobre esses tópicos, responda educadamente que só pode ajudar com informações sobre a LogiCodem.`;
 
     try {
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -1042,56 +1023,36 @@ async function sendChatbotMessage() {
             body: JSON.stringify({
                 model: 'gpt-3.5-turbo',
                 messages: [
-                    {
-                        role: 'system',
-                        content: 'Você é um assistente da LogiCodem Solutions. Responda APENAS sobre: 1) A empresa LogiCodem Solutions e seus serviços, 2) Allison Joanine de Araujo Ribeiro, CEO e Desenvolvedor, 3) Desenvolvimento de software, sistemas web, automações, integrações, câmeras com IA. Para qualquer pergunta fora deste escopo, responda educadamente que só pode ajudar com informações sobre a LogiCodem Solutions.'
-                    },
-                    {
-                        role: 'user',
-                        content: userMessage
-                    }
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: userMessage }
                 ],
                 max_tokens: 150
             })
         });
 
         const data = await response.json();
-        const botMessage = data.choices[0].message.content;
-
-        const botMessageEl = document.createElement('div');
-        botMessageEl.className = 'message bot';
-        botMessageEl.textContent = botMessage;
-        chatbotMessages.appendChild(botMessageEl);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        const aiMessage = data.choices[0].message.content;
+        addMessage(aiMessage, 'bot');
     } catch (error) {
-        console.error('Erro:', error);
-        const errorEl = document.createElement('div');
-        errorEl.className = 'message bot';
-        errorEl.textContent = 'Desculpe, ocorreu um erro. Tente novamente.';
-        chatbotMessages.appendChild(errorEl);
+        console.error('Erro ao conectar com IA:', error);
+        addMessage('Desculpe, não consegui conectar com a IA. Tente novamente mais tarde.', 'bot');
     }
 }
 
-chatbotSend.addEventListener('click', sendChatbotMessage);
-chatbotInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendChatbotMessage();
-});
-
-// Form Submission
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
+// Contact Form
+document.getElementById('contactForm').addEventListener('submit', (e) => {
     e.preventDefault();
-    
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
 
-    // Simple email sending simulation (in production, use a backend service)
-    const mailtoLink = `mailto:logicodem@gmail.com?subject=Novo Contato de ${name}&body=Nome: ${name}%0AEmail: ${email}%0AMensagem: ${message}`;
+    const mailtoLink = `mailto:logicodem@gmail.com?subject=Contato de ${name}&body=Nome: ${name}%0AEmail: ${email}%0A%0AMensagem:%0A${message}`;
     window.location.href = mailtoLink;
-    
-    // Reset form
-    document.getElementById('contactForm').reset();
-    alert('Obrigado pelo contato! Redirecionando para seu cliente de email...');
+});
+
+// Inicializar com mensagem de boas-vindas
+window.addEventListener('load', () => {
+    addMessage('Olá! Bem-vindo à LogiCodem. Como posso ajudar?', 'bot');
 });
     </script>
 </body>
