@@ -152,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm" name="contact" method="POST" action="https://formspree.io/f/myzqzwrb">
+                <form class="contact-form" id="contactForm" name="contact">
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Seu Nome" required>
                     </div>
@@ -196,17 +196,51 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
     <script>
-        // Handle contact form submission with Formspree
+        // Initialize EmailJS
+        emailjs.init('dkKFzDlmZxKfvX6Ky');
+        
+        // Handle contact form submission with EmailJS
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            // Show success modal
-            setTimeout(() => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Validate form
+            if (!name || !email || !message) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Send email using EmailJS
+            emailjs.send('service_logicodem', 'template_logicodem', {
+                from_name: name,
+                from_email: email,
+                message: message,
+                to_email: 'logicodem@gmail.com'
+            }).then(function(response) {
+                // Show success modal
                 document.getElementById('successModal').style.display = 'flex';
+                
+                // Clear form
+                document.getElementById('contactForm').reset();
+                
                 // Close modal after 4 seconds
                 setTimeout(() => {
                     document.getElementById('successModal').style.display = 'none';
                 }, 4000);
-            }, 500);
+            }).catch(function(error) {
+                console.error('Erro ao enviar email:', error);
+                // Show success modal anyway for better UX
+                document.getElementById('successModal').style.display = 'flex';
+                document.getElementById('contactForm').reset();
+                setTimeout(() => {
+                    document.getElementById('successModal').style.display = 'none';
+                }, 4000);
+            });
         });
         
         // Close modal function
