@@ -767,19 +767,44 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            // Create mailto link
-            const mailtoLink = `mailto:logicodem@gmail.com?subject=Contato de ${name}&body=Nome: ${name}%0AEmail: ${email}%0A%0AMensagem:%0A${message}`;
-            
-            // Show success modal
-            document.getElementById('successModal').style.display = 'block';
-            
-            // Clear form
-            document.querySelector('.contact-form').reset();
-            
-            // Open email client
-            setTimeout(() => {
-                window.location.href = mailtoLink;
-            }, 1500);
+            // Validate form
+            if (!name || !email || !message) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // Send email using FormSubmit
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('message', message);
+            formData.append('_captcha', 'false');
+            formData.append('_next', window.location.href);
+
+            fetch('https://formsubmit.co/ajax/logicodem@gmail.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success modal
+                    document.getElementById('successModal').style.display = 'block';
+                    
+                    // Clear form
+                    document.querySelector('.contact-form').reset();
+                    
+                    // Close modal after 3 seconds
+                    setTimeout(() => {
+                        document.getElementById('successModal').style.display = 'none';
+                    }, 3000);
+                } else {
+                    alert('Erro ao enviar mensagem. Tente novamente.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao enviar mensagem. Tente novamente.');
+            });
         }
 
         // Close modal when clicking outside
