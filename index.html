@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LogiCodem - Inteligência aplicada ao código. Soluções tecnológicas seguras, eficientes e sob medida.">
     <title>LogiCodem Solutions - Desenvolvimento de Software e Soluções Inteligentes</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,160 +12,124 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="images/LogiCodem-logo_solo.jpeg" alt="LogiCodem Logo" class="logo-img">
-                <span class="logo-text">LogiCodem</span>
+                <img src="LogiCodem-logo_solo.jpeg" alt="LogiCodem Logo">
+                <span>LogiCodem</span>
             </div>
             <nav class="nav">
-                <a href="#inicio" class="nav-link">Início</a>
-                <a href="#servicos" class="nav-link">Serviços</a>
-                <a href="#sobre" class="nav-link">Sobre</a>
-                <a href="#contato" class="nav-link">Contato</a>
+                <a href="#inicio">Início</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
             </nav>
             <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <nav class="mobile-menu" id="mobileMenu">
-        <a href="#inicio" class="mobile-nav-link">Início</a>
-        <a href="#servicos" class="mobile-nav-link">Serviços</a>
-        <a href="#sobre" class="mobile-nav-link">Sobre</a>
-        <a href="#contato" class="mobile-nav-link">Contato</a>
-    </nav>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="inicio">
+            <div class="container">
+                <h1>Inteligência Aplicada ao Código</h1>
+                <p>Transformamos ideias em soluções tecnológicas seguras, eficientes e escaláveis para impulsionar seu negócio.</p>
+                <a href="#contato" class="btn btn-primary">Fale Conosco</a>
+            </div>
+        </section>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Inteligência Aplicada ao Código</h1>
-            <p class="hero-subtitle">Transformamos ideias em soluções tecnológicas seguras, eficientes e escaláveis para impulsionar seu negócio.</p>
-            <a href="#contato" class="cta-button">Fale Conosco</a>
-        </div>
-        <div class="hero-background">
-            <div class="circuit-line circuit-1"></div>
-            <div class="circuit-line circuit-2"></div>
-            <div class="circuit-line circuit-3"></div>
-            <div class="circuit-dot"></div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicos" class="services">
-        <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <p class="section-subtitle">Soluções completas para transformar sua visão em realidade</p>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
+        <!-- Services Section -->
+        <section class="services" id="servicos">
+            <div class="container">
+                <h2>Nossos Serviços</h2>
+                <p class="section-subtitle">Soluções completas para transformar sua visão em realidade</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
                         <i class="fas fa-code"></i>
+                        <h3>Desenvolvimento de Sistemas Personalizados</h3>
+                        <p>Criamos sistemas sob medida que atendem às necessidades específicas do seu negócio, com arquitetura robusta e escalável.</p>
                     </div>
-                    <h3>Desenvolvimento de Sistemas Personalizados</h3>
-                    <p>Criamos sistemas sob medida que atendem às necessidades específicas do seu negócio, com arquitetura robusta e escalável.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
+                    
+                    <div class="service-card">
                         <i class="fas fa-globe"></i>
+                        <h3>Sistemas Web Modernos e Responsivos</h3>
+                        <p>Desenvolvemos aplicações web de alta performance, totalmente responsivas e otimizadas para todas as plataformas.</p>
                     </div>
-                    <h3>Sistemas Web Modernos e Responsivos</h3>
-                    <p>Desenvolvemos aplicações web de alta performance, totalmente responsivas e otimizadas para todas as plataformas.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
+                    
+                    <div class="service-card">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Aplicativos e Automações</h3>
+                        <p>Automatizamos processos complexos e desenvolvemos aplicativos inteligentes que aumentam a produtividade.</p>
                     </div>
-                    <h3>Aplicativos e Automações</h3>
-                    <p>Automatizamos processos complexos e desenvolvemos aplicativos inteligentes que aumentam a produtividade.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
+                    
+                    <div class="service-card">
                         <i class="fas fa-plug"></i>
-                    </div>
-                    <h3>Integrações e APIs</h3>
-                    <p>Integramos sistemas e desenvolvemos APIs robustas que conectam sua infraestrutura tecnológica de forma segura.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="sobre" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">Sobre a LogiCodem</h2>
-                    <p class="about-description">
-                        A LogiCodem une <strong>lógica, código e inteligência</strong> para criar soluções tecnológicas seguras, eficientes e sob medida. Nosso objetivo é resolver problemas reais com tecnologia inteligente, estruturada e confiável.
-                    </p>
-                    <p class="about-description">
-                        Somos especialistas em desenvolvimento de software, sistemas web, automações e integrações de APIs. Cada projeto é tratado com excelência, focando em inovação, segurança e eficiência para impulsionar o crescimento do seu negócio.
-                    </p>
-                    <div class="about-features">
-                        <div class="feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Segurança</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-bolt"></i>
-                            <span>Eficiência</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-expand"></i>
-                            <span>Escalabilidade</span>
-                        </div>
+                        <h3>Integrações e APIs</h3>
+                        <p>Integramos sistemas e desenvolvemos APIs robustas que conectam sua infraestrutura tecnológica de forma segura.</p>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="images/PerfilWhatsapp.jpeg" alt="Equipe LogiCodem">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="sobre">
+            <div class="container">
+                <h2>Sobre a LogiCodem</h2>
+                <p>A LogiCodem une <strong>lógica, código e inteligência</strong> para criar soluções tecnológicas seguras, eficientes e sob medida. Nosso objetivo é resolver problemas reais com tecnologia inteligente, estruturada e confiável.</p>
+                <p>Somos especialistas em desenvolvimento de software, sistemas web, automações e integrações de APIs. Cada projeto é tratado com excelência, focando em inovação, segurança e eficiência para impulsionar o crescimento do seu negócio.</p>
+                
+                <div class="values">
+                    <div class="value">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Segurança</h3>
+                    </div>
+                    <div class="value">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h3>Eficiência</h3>
+                    </div>
+                    <div class="value">
+                        <i class="fas fa-expand"></i>
+                        <h3>Escalabilidade</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contato" class="contact">
-        <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <p class="section-subtitle">Vamos conversar sobre como podemos ajudar seu negócio</p>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
+        <!-- Contact Section -->
+        <section class="contact" id="contato">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <p class="section-subtitle">Vamos conversar sobre como podemos ajudar seu negócio</p>
+                
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <div class="info-item">
                             <h3>Email</h3>
                             <a href="mailto:logicodem@gmail.com">logicodem@gmail.com</a>
                         </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
+                        <div class="info-item">
                             <h3>WhatsApp</h3>
                             <a href="https://wa.me/5515991192202" target="_blank">(15) 99119-2202</a>
                         </div>
                     </div>
+                    
+                    <form class="contact-form" id="contactForm" name="contact" method="POST" action="https://formspree.io/f/myzqzwrb">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Seu Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Seu Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Sua Mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
                 </div>
-                <form class="contact-form" id="contactForm" name="contact">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Seu Nome" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Seu Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Enviar Mensagem</button>
-                </form>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Success Modal -->
     <div id="successModal" class="success-modal" style="display: none;">
@@ -175,8 +138,12 @@
                 <h2>Mensagem Enviada com Sucesso!</h2>
                 <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
-            <p>Obrigado por entrar em contato. Receberemos sua mensagem e em breve retornaremos com uma resposta.</p>
-            <button class="modal-button" onclick="closeModal()">Fechar</button>
+            <div class="modal-body">
+                <p>Obrigado por entrar em contato. Receberemos sua mensagem e em breve retornaremos com uma resposta.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal()">Fechar</button>
+            </div>
         </div>
     </div>
 
@@ -189,60 +156,19 @@
                     <p>Inteligência aplicada ao código</p>
                 </div>
                 <div class="footer-section">
-                    <p>&copy; 2024 LogiCodem Solutions. Todos os direitos reservados.</p>
+                    <h3>Contato</h3>
+                    <p>Email: <a href="mailto:logicodem@gmail.com">logicodem@gmail.com</a></p>
+                    <p>WhatsApp: <a href="https://wa.me/5515991192202" target="_blank">(15) 99119-2202</a></p>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LogiCodem Solutions. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
     <script>
-        // Initialize EmailJS
-        emailjs.init('dkKFzDlmZxKfvX6Ky');
-        
-        // Handle contact form submission with EmailJS
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Validate form
-            if (!name || !email || !message) {
-                alert('Por favor, preencha todos os campos.');
-                return;
-            }
-            
-            // Send email using EmailJS
-            emailjs.send('service_logicodem', 'template_logicodem', {
-                from_name: name,
-                from_email: email,
-                message: message,
-                to_email: 'logicodem@gmail.com'
-            }).then(function(response) {
-                // Show success modal
-                document.getElementById('successModal').style.display = 'flex';
-                
-                // Clear form
-                document.getElementById('contactForm').reset();
-                
-                // Close modal after 4 seconds
-                setTimeout(() => {
-                    document.getElementById('successModal').style.display = 'none';
-                }, 4000);
-            }).catch(function(error) {
-                console.error('Erro ao enviar email:', error);
-                // Show success modal anyway for better UX
-                document.getElementById('successModal').style.display = 'flex';
-                document.getElementById('contactForm').reset();
-                setTimeout(() => {
-                    document.getElementById('successModal').style.display = 'none';
-                }, 4000);
-            });
-        });
-        
         // Close modal function
         function closeModal() {
             document.getElementById('successModal').style.display = 'none';
@@ -255,6 +181,19 @@
                 modal.style.display = 'none';
             }
         }
+        
+        // Show success modal when form is submitted
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            // Wait a bit for the form to submit, then show modal
+            setTimeout(() => {
+                document.getElementById('successModal').style.display = 'flex';
+                
+                // Close modal after 4 seconds
+                setTimeout(() => {
+                    document.getElementById('successModal').style.display = 'none';
+                }, 4000);
+            }, 500);
+        });
     </script>
 </body>
 </html>
