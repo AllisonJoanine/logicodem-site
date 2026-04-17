@@ -3,156 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LogiCodem - Inteligência aplicada ao código. Soluções tecnológicas seguras, eficientes e sob medida.">
-    <title>LogiCodem Solutions - Desenvolvimento de Software e Soluções Inteligentes</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="LogiCodem - Soluções tecnológicas com lógica, código e inteligência. Full Stack Developer especializado em sistemas escaláveis, IA e DevOps.">
+    <meta name="keywords" content="desenvolvimento, software, IA, DevOps, .NET, Node.js, React, Python">
+    <title>LogiCodem - Soluções Tecnológicas Profissionais</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <img src="LogiCodem-logo_solo.jpeg" alt="LogiCodem Logo" class="logo-img">
-                <span class="logo-text">LogiCodem</span>
+            <div class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>LogiCodem</span>
+                </div>
             </div>
-            <nav class="nav">
-                <a href="#inicio" class="nav-link">Início</a>
-                <a href="#servicos" class="nav-link">Serviços</a>
-                <a href="#sobre" class="nav-link">Sobre</a>
-                <a href="#contato" class="nav-link">Contato</a>
-            </nav>
-            <button class="menu-toggle" id="menuToggle">
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+                <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </div>
         </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <nav class="mobile-menu" id="mobileMenu">
-        <a href="#inicio" class="mobile-nav-link">Início</a>
-        <a href="#servicos" class="mobile-nav-link">Serviços</a>
-        <a href="#sobre" class="mobile-nav-link">Sobre</a>
-        <a href="#contato" class="mobile-nav-link">Contato</a>
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Inteligência Aplicada ao Código</h1>
-            <p class="hero-subtitle">Transformamos ideias em soluções tecnológicas seguras, eficientes e escaláveis para impulsionar seu negócio.</p>
-            <a href="#contato" class="cta-button">Fale Conosco</a>
-        </div>
-        <div class="hero-background">
-            <div class="circuit-line circuit-1"></div>
-            <div class="circuit-line circuit-2"></div>
-            <div class="circuit-line circuit-3"></div>
-            <div class="circuit-dot"></div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicos" class="services">
+    <section id="home" class="hero">
         <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <p class="section-subtitle">Soluções completas para transformar sua visão em realidade</p>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Construindo soluções com <span class="highlight">lógica, código e inteligência</span></h1>
+                    <p class="hero-subtitle">Full Stack Developer especializado em sistemas escaláveis, IA e DevOps. Transformando ideias em tecnologia de ponta.</p>
+                    <div class="hero-buttons">
+                        <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+                        <a href="#contato" class="btn btn-secondary">Contato</a>
                     </div>
-                    <h3>Desenvolvimento de Sistemas Personalizados</h3>
-                    <p>Criamos sistemas sob medida que atendem às necessidades específicas do seu negócio, com arquitetura robusta e escalável.</p>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-globe"></i>
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-cube"></i>
                     </div>
-                    <h3>Sistemas Web Modernos e Responsivos</h3>
-                    <p>Desenvolvemos aplicações web de alta performance, totalmente responsivas e otimizadas para todas as plataformas.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Aplicativos e Automações</h3>
-                    <p>Automatizamos processos complexos e desenvolvemos aplicativos inteligentes que aumentam a produtividade.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-plug"></i>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>Integrações e APIs</h3>
-                    <p>Integramos sistemas e desenvolvemos APIs robustas que conectam sua infraestrutura tecnológica de forma segura.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Sobre -->
     <section id="sobre" class="about">
         <div class="container">
+            <h2 class="section-title">Sobre LogiCodem</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h2 class="section-title">Sobre a LogiCodem</h2>
                     <p class="about-description">
                         A LogiCodem une <strong>lógica, código e inteligência</strong> para criar soluções tecnológicas seguras, eficientes e sob medida. Nosso objetivo é resolver problemas reais com tecnologia inteligente, estruturada e confiável.
                     </p>
                     <p class="about-description">
-                        Somos especialistas em desenvolvimento de software, sistemas web, automações e integrações de APIs. Cada projeto é tratado com excelência, focando em inovação, segurança e eficiência para impulsionar o crescimento do seu negócio.
+                        Especialista em desenvolvimento full stack, automação, integração de APIs e implementação de IA. Cada projeto é tratado com excelência, focando em inovação, segurança e escalabilidade para impulsionar o crescimento do seu negócio.
                     </p>
-                    <div class="about-features">
-                        <div class="feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Segurança</span>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Projetos Entregues</p>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-bolt"></i>
-                            <span>Eficiência</span>
+                        <div class="stat">
+                            <h3>8+</h3>
+                            <p>Anos de Experiência</p>
                         </div>
-                        <div class="feature">
-                            <i class="fas fa-expand"></i>
-                            <span>Escalabilidade</span>
+                        <div class="stat">
+                            <h3>100%</h3>
+                            <p>Satisfação</p>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="PerfilWhatsapp.jpeg" alt="Equipe LogiCodem">
+                <div class="about-features">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Segurança</h3>
+                        <p>Implementação de boas práticas e padrões de segurança em todos os projetos</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Performance</h3>
+                        <p>Otimização contínua para máxima velocidade e eficiência</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-expand"></i>
+                        <h3>Escalabilidade</h3>
+                        <p>Arquitetura preparada para crescimento e alta demanda</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>IA & Automação</h3>
+                        <p>Integração inteligente de IA e automação de processos</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Habilidades Técnicas -->
+    <section id="habilidades" class="skills">
+        <div class="container">
+            <h2 class="section-title">Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <!-- Desenvolvimento -->
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-code"></i> Desenvolvimento
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C# / .NET</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+
+                <!-- DevOps -->
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-server"></i> DevOps & Cloud
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Linux</span>
+                    </div>
+                </div>
+
+                <!-- Segurança -->
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-lock"></i> Segurança
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Fortinet</span>
+                        <span class="skill-tag">OWASP</span>
+                        <span class="skill-tag">Criptografia</span>
+                        <span class="skill-tag">Monitoramento</span>
+                        <span class="skill-tag">Pentesting</span>
+                        <span class="skill-tag">Compliance</span>
+                    </div>
+                </div>
+
+                <!-- IA & ML -->
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-brain"></i> IA & Machine Learning
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">OpenAI API</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">LLMs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projetos Destacados</h2>
+            <div class="projects-grid">
+                <!-- Projeto 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Sistema de Vendas Inteligente</h3>
+                    </div>
+                    <p class="project-description">
+                        Plataforma e-commerce completa com integração de IA para recomendações de produtos, processamento de pagamentos e análise de vendas em tempo real.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">IA</span>
+                    </div>
+                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-brain"></i>
+                        <h3>Assistente de IA Conversacional</h3>
+                    </div>
+                    <p class="project-description">
+                        Chatbot inteligente com processamento de linguagem natural, integração com OpenAI e capacidade de aprendizado contínuo para suporte ao cliente.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-globe"></i>
+                        <h3>Dashboard Administrativo Escalável</h3>
+                    </div>
+                    <p class="project-description">
+                        Plataforma administrativa com arquitetura em microserviços, real-time analytics, autenticação segura e suporte para múltiplos usuários.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C# / .NET</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Azure</span>
+                    </div>
+                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Projeto 4 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-lock"></i>
+                        <h3>Sistema de Autenticação Seguro</h3>
+                    </div>
+                    <p class="project-description">
+                        Solução de autenticação e autorização com OAuth 2.0, JWT, 2FA e criptografia de ponta a ponta para máxima segurança.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">JWT</span>
+                        <span class="tech-tag">OAuth 2.0</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Projeto 5 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Plataforma de Analytics em Tempo Real</h3>
+                    </div>
+                    <p class="project-description">
+                        Sistema de coleta e visualização de dados com processamento em tempo real, dashboards customizáveis e exportação de relatórios.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">ElasticSearch</span>
+                    </div>
+                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Projeto 6 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Infraestrutura em Nuvem Otimizada</h3>
+                    </div>
+                    <p class="project-description">
+                        Arquitetura cloud-native com containerização, orquestração de serviços, auto-scaling e monitoramento contínuo de performance.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">AWS/Azure</span>
+                        <span class="tech-tag">Terraform</span>
+                    </div>
+                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferencial -->
+    <section class="diferencial">
+        <div class="container">
+            <h2 class="section-title">Por que escolher LogiCodem?</h2>
+            <div class="diferencial-grid">
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Inovação Constante</h3>
+                    <p>Sempre atualizado com as últimas tecnologias e melhores práticas do mercado</p>
+                </div>
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Parceria Real</h3>
+                    <p>Não somos apenas fornecedores, somos parceiros no sucesso do seu negócio</p>
+                </div>
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Qualidade Premium</h3>
+                    <p>Código limpo, testado e documentado seguindo padrões internacionais</p>
+                </div>
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Entrega no Prazo</h3>
+                    <p>Comprometimento com prazos e comunicação transparente em todas as etapas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
     <section id="contato" class="contact">
         <div class="container">
             <h2 class="section-title">Entre em Contato</h2>
-            <p class="section-subtitle">Vamos conversar sobre como podemos ajudar seu negócio</p>
+            <p class="contact-subtitle">Vamos conversar sobre como posso ajudar seu projeto</p>
             
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <h3>Email</h3>
-                            <a href="mailto:logicodem@gmail.com">logicodem@gmail.com</a>
+                            <h4>Email</h4>
+                            <a href="mailto:contato@logicodem.com">contato@logicodem.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <h3>WhatsApp</h3>
+                            <h4>WhatsApp</h4>
                             <a href="https://wa.me/5515991192202" target="_blank">(15) 99119-2202</a>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Localização</h4>
+                            <p>São Paulo, Brasil</p>
+                        </div>
+                    </div>
                 </div>
-                <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
                         <input type="text" id="name" placeholder="Seu Nome" required>
                     </div>
@@ -162,87 +379,53 @@
                     <div class="form-group">
                         <textarea id="message" placeholder="Sua Mensagem" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="submit-button">Enviar Mensagem</button>
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
                 </form>
             </div>
         </div>
     </section>
-
-    <!-- Success Modal -->
-    <div id="successModal" class="success-modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Mensagem Enviada com Sucesso!</h2>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Obrigado por entrar em contato. Receberemos sua mensagem e em breve retornaremos com uma resposta.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="modal-button" onclick="closeModal()">Fechar</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>LogiCodem</h3>
-                    <p>Inteligência aplicada ao código</p>
+                    <h4>LogiCodem</h4>
+                    <p>Soluções tecnológicas com lógica, código e inteligência.</p>
                 </div>
                 <div class="footer-section">
-                    <p>&copy; 2024 LogiCodem Solutions. Todos os direitos reservados.</p>
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#projetos">Projetos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
                 </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LogiCodem. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Mensagem Enviada!</h3>
+            <p>Obrigado por entrar em contato. Retornaremos em breve.</p>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
-    <script>
-        // Close modal function
-        function closeModal() {
-            document.getElementById('successModal').style.display = 'none';
-        }
-        
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('successModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-        
-        // Handle form submission
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Create mailto link
-            const subject = `Novo contato de ${name}`;
-            const body = `Nome: ${name}%0AEmail: ${email}%0A%0AMensagem:%0A${message}`;
-            const mailtoLink = `mailto:logicodem@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-            
-            // Show success modal
-            document.getElementById('successModal').style.display = 'flex';
-            
-            // Clear form
-            document.getElementById('contactForm').reset();
-            
-            // Close modal after 4 seconds
-            setTimeout(() => {
-                document.getElementById('successModal').style.display = 'none';
-            }, 4000);
-            
-            // Open mailto link (this will open the user's email client)
-            setTimeout(() => {
-                window.location.href = mailtoLink;
-            }, 500);
-        }
-    </script>
 </body>
 </html>
