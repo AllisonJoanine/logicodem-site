@@ -15,7 +15,7 @@
         <div class="container">
             <div class="nav-brand">
                 <div class="logo">
-                    <i class="fas fa-code"></i>
+                    <img src="images/LogiCodem-logo_solo.jpeg" alt="LogiCodem" class="logo-img">
                     <span>LogiCodem</span>
                 </div>
             </div>
@@ -47,6 +47,9 @@
                     </div>
                 </div>
                 <div class="hero-visual">
+                    <div class="hero-logo-container">
+                        <img src="images/LogiCodem-Logo.jpeg" alt="LogiCodem" class="hero-logo">
+                    </div>
                     <div class="floating-card card-1">
                         <i class="fas fa-cube"></i>
                     </div>
@@ -66,6 +69,9 @@
         <div class="container">
             <h2 class="section-title">Sobre LogiCodem</h2>
             <div class="about-content">
+                <div class="about-image">
+                    <img src="PerfilWhatsapp.jpeg" alt="Allison Joanine - Fundador LogiCodem" class="profile-image">
+                </div>
                 <div class="about-text">
                     <p class="about-description">
                         A LogiCodem une <strong>lógica, código e inteligência</strong> para criar soluções tecnológicas seguras, eficientes e sob medida. Nosso objetivo é resolver problemas reais com tecnologia inteligente, estruturada e confiável.
@@ -75,12 +81,12 @@
                     </p>
                     <div class="about-stats">
                         <div class="stat">
-                            <h3>50+</h3>
+                            <h3>10+</h3>
                             <p>Projetos Entregues</p>
                         </div>
                         <div class="stat">
-                            <h3>8+</h3>
-                            <p>Anos de Experiência</p>
+                            <h3>2+</h3>
+                            <p>Anos de Expertise</p>
                         </div>
                         <div class="stat">
                             <h3>100%</h3>
@@ -191,7 +197,13 @@
             <h2 class="section-title">Projetos Destacados</h2>
             <div class="projects-grid">
                 <!-- Projeto 1 -->
-                <div class="project-card">
+                <div class="project-card" onclick="openProjectModal('images/projeto-vendas.png', 'Sistema de Vendas Inteligente', 'Plataforma e-commerce completa com integração de IA para recomendações de produtos, processamento de pagamentos e análise de vendas em tempo real.')">
+                    <div class="project-image">
+                        <img src="images/projeto-vendas.png" alt="Sistema de Vendas Inteligente" loading="lazy">
+                        <div class="project-image-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <i class="fas fa-shopping-cart"></i>
                         <h3>Sistema de Vendas Inteligente</h3>
@@ -205,11 +217,17 @@
                         <span class="tech-tag">MongoDB</span>
                         <span class="tech-tag">IA</span>
                     </div>
-                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="project-link" onclick="event.stopPropagation(); openProjectModal('images/projeto-vendas.png', 'Sistema de Vendas Inteligente', 'Plataforma e-commerce completa com integração de IA para recomendações de produtos, processamento de pagamentos e análise de vendas em tempo real.')">Ver Projeto <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Projeto 2 -->
-                <div class="project-card">
+                <div class="project-card" onclick="openProjectModal('images/projeto-ia.png', 'Assistente de IA Conversacional', 'Chatbot inteligente com processamento de linguagem natural, integração com OpenAI e capacidade de aprendizado contínuo para suporte ao cliente.')">
+                    <div class="project-image">
+                        <img src="images/projeto-ia.png" alt="Assistente de IA Conversacional" loading="lazy">
+                        <div class="project-image-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <i class="fas fa-brain"></i>
                         <h3>Assistente de IA Conversacional</h3>
@@ -223,11 +241,17 @@
                         <span class="tech-tag">FastAPI</span>
                         <span class="tech-tag">NLP</span>
                     </div>
-                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="project-link" onclick="event.stopPropagation(); openProjectModal('images/projeto-ia.png', 'Assistente de IA Conversacional', 'Chatbot inteligente com processamento de linguagem natural, integração com OpenAI e capacidade de aprendizado contínuo para suporte ao cliente.')">Ver Projeto <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Projeto 3 -->
-                <div class="project-card">
+                <div class="project-card" onclick="openProjectModal('images/projeto-dashboard.png', 'Dashboard Administrativo Escalável', 'Plataforma administrativa com arquitetura em microserviços, real-time analytics, autenticação segura e suporte para múltiplos usuários.')">
+                    <div class="project-image">
+                        <img src="images/projeto-dashboard.png" alt="Dashboard Administrativo Escalável" loading="lazy">
+                        <div class="project-image-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <i class="fas fa-globe"></i>
                         <h3>Dashboard Administrativo Escalável</h3>
@@ -241,11 +265,17 @@
                         <span class="tech-tag">Docker</span>
                         <span class="tech-tag">Azure</span>
                     </div>
-                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="project-link" onclick="event.stopPropagation(); openProjectModal('images/projeto-dashboard.png', 'Dashboard Administrativo Escalável', 'Plataforma administrativa com arquitetura em microserviços, real-time analytics, autenticação segura e suporte para múltiplos usuários.')">Ver Projeto <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Projeto 4 -->
-                <div class="project-card">
+                <div class="project-card" onclick="openProjectModal('images/projeto-auth.png', 'Sistema de Autenticação Seguro', 'Solução de autenticação e autorização com OAuth 2.0, JWT, 2FA e criptografia de ponta a ponta para máxima segurança.')">
+                    <div class="project-image">
+                        <img src="images/projeto-auth.png" alt="Sistema de Autenticação Seguro" loading="lazy">
+                        <div class="project-image-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <i class="fas fa-lock"></i>
                         <h3>Sistema de Autenticação Seguro</h3>
@@ -259,11 +289,17 @@
                         <span class="tech-tag">OAuth 2.0</span>
                         <span class="tech-tag">PostgreSQL</span>
                     </div>
-                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="project-link" onclick="event.stopPropagation(); openProjectModal('images/projeto-auth.png', 'Sistema de Autenticação Seguro', 'Solução de autenticação e autorização com OAuth 2.0, JWT, 2FA e criptografia de ponta a ponta para máxima segurança.')">Ver Projeto <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Projeto 5 -->
-                <div class="project-card">
+                <div class="project-card" onclick="openProjectModal('images/projeto-analytics.png', 'Plataforma de Analytics em Tempo Real', 'Sistema de coleta e visualização de dados com processamento em tempo real, dashboards customizáveis e exportação de relatórios.')">
+                    <div class="project-image">
+                        <img src="images/projeto-analytics.png" alt="Plataforma de Analytics em Tempo Real" loading="lazy">
+                        <div class="project-image-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <i class="fas fa-chart-line"></i>
                         <h3>Plataforma de Analytics em Tempo Real</h3>
@@ -277,11 +313,17 @@
                         <span class="tech-tag">Kafka</span>
                         <span class="tech-tag">ElasticSearch</span>
                     </div>
-                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="project-link" onclick="event.stopPropagation(); openProjectModal('images/projeto-analytics.png', 'Plataforma de Analytics em Tempo Real', 'Sistema de coleta e visualização de dados com processamento em tempo real, dashboards customizáveis e exportação de relatórios.')">Ver Projeto <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <!-- Projeto 6 -->
-                <div class="project-card">
+                <div class="project-card" onclick="openProjectModal('images/projeto-cloud.png', 'Infraestrutura em Nuvem Otimizada', 'Arquitetura cloud-native com containerização, orquestração de serviços, auto-scaling e monitoramento contínuo de performance.')">
+                    <div class="project-image">
+                        <img src="images/projeto-cloud.png" alt="Infraestrutura em Nuvem Otimizada" loading="lazy">
+                        <div class="project-image-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
                     <div class="project-header">
                         <i class="fas fa-cloud"></i>
                         <h3>Infraestrutura em Nuvem Otimizada</h3>
@@ -295,7 +337,7 @@
                         <span class="tech-tag">AWS/Azure</span>
                         <span class="tech-tag">Terraform</span>
                     </div>
-                    <a href="#" class="project-link">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="project-link" onclick="event.stopPropagation(); openProjectModal('images/projeto-cloud.png', 'Infraestrutura em Nuvem Otimizada', 'Arquitetura cloud-native com containerização, orquestração de serviços, auto-scaling e monitoramento contínuo de performance.')">Ver Projeto <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -423,6 +465,20 @@
             <i class="fas fa-check-circle"></i>
             <h3>Mensagem Enviada!</h3>
             <p>Obrigado por entrar em contato. Retornaremos em breve.</p>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="projectModal" onclick="closeProjectModal()">
+        <div class="project-modal-content" onclick="event.stopPropagation()">
+            <button class="project-modal-close" onclick="closeProjectModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="" alt="" id="projectModalImage" class="project-modal-image">
+            <div class="project-modal-info">
+                <h3 id="projectModalTitle"></h3>
+                <p id="projectModalDesc"></p>
+            </div>
         </div>
     </div>
 

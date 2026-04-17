@@ -237,3 +237,35 @@ prefersDarkScheme.addEventListener('change', (e) => {
 // Adicione seu código de analytics aqui (Google Analytics, etc)
 
 console.log('LogiCodem - Site carregado com sucesso!');
+
+// ===========================
+// MODAL DE PROJETOS
+// ===========================
+
+function openProjectModal(imageSrc, title, description) {
+    const modal = document.getElementById('projectModal');
+    const modalImage = document.getElementById('projectModalImage');
+    const modalTitle = document.getElementById('projectModalTitle');
+    const modalDesc = document.getElementById('projectModalDesc');
+    
+    modalImage.src = imageSrc;
+    modalImage.alt = title;
+    modalTitle.textContent = title;
+    modalDesc.textContent = description;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal() {
+    const modal = document.getElementById('projectModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Fechar modal com ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeProjectModal();
+    }
+});
