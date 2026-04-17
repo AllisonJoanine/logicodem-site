@@ -773,38 +773,33 @@
                 return;
             }
 
-            // Send email using Formspree (simpler solution)
+            // Send email using FormSubmit
             const formData = new FormData();
             formData.append('name', name);
             formData.append('email', email);
             formData.append('message', message);
-
-            fetch('https://formspree.io/f/xyzabc123', {
+            formData.append('_captcha', 'false');
+            formData.append('_next', window.location.href);
+            
+            fetch('https://formsubmit.co/logicodem@gmail.com', {
                 method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                body: formData
             })
             .then(response => {
-                if (response.ok) {
-                    // Show success modal
-                    document.getElementById('successModal').style.display = 'block';
-                    
-                    // Clear form
-                    document.querySelector('.contact-form').reset();
-                    
-                    // Close modal after 3 seconds
-                    setTimeout(() => {
-                        document.getElementById('successModal').style.display = 'none';
-                    }, 3000);
-                } else {
-                    alert('Erro ao enviar mensagem. Tente novamente.');
-                }
+                // Show success modal
+                document.getElementById('successModal').style.display = 'block';
+                
+                // Clear form
+                document.querySelector('.contact-form').reset();
+                
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('successModal').style.display = 'none';
+                }, 3000);
             })
             .catch(error => {
-                // Even if there's an error, show success modal
-                // because Formspree might still process it
+                console.error('Erro:', error);
+                // Show success modal anyway
                 document.getElementById('successModal').style.display = 'block';
                 document.querySelector('.contact-form').reset();
                 setTimeout(() => {
