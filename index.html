@@ -152,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" name="contact" method="POST" action="https://formspree.io/f/myzqzwrb">
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Seu Nome" required>
                     </div>
@@ -197,55 +197,16 @@
 
     <script src="js/script.js"></script>
     <script>
-        // Handle contact form submission
+        // Handle contact form submission with Formspree
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Validate form
-            if (!name || !email || !message) {
-                alert('Por favor, preencha todos os campos.');
-                return;
-            }
-            
-            // Create FormData
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('email', email);
-            formData.append('message', message);
-            
-            // Show success modal immediately
-            document.getElementById('successModal').style.display = 'flex';
-            
-            // Clear form
-            document.getElementById('contactForm').reset();
-            
-            // Close modal after 4 seconds
+            // Show success modal
             setTimeout(() => {
-                document.getElementById('successModal').style.display = 'none';
-            }, 4000);
-            
-            // Send to Getform in the background
-            fetch('https://getform.io/f/bwonvnwb', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Email enviado com sucesso!');
-                } else {
-                    console.error('Erro ao enviar:', response.status);
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-            });
+                document.getElementById('successModal').style.display = 'flex';
+                // Close modal after 4 seconds
+                setTimeout(() => {
+                    document.getElementById('successModal').style.display = 'none';
+                }, 4000);
+            }, 500);
         });
         
         // Close modal function
