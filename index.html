@@ -3,811 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogiCodem Solutions - Soluções Tecnológicas Corporativas</title>
+    <meta name="description" content="LogiCodem - Inteligência aplicada ao código. Soluções tecnológicas seguras, eficientes e sob medida.">
+    <title>LogiCodem Solutions - Desenvolvimento de Software e Soluções Inteligentes</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-dark: #0d1b2a;
-            --accent-gold: #c9a961;
-            --text-light: #ffffff;
-            --text-dark: #333333;
-            --bg-light: #f8f9fa;
-            --hero-bg: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-        }
-
-        /* Rocket Animation */
-        @keyframes rocketLaunch {
-            0% {
-                bottom: -100px;
-                opacity: 1;
-            }
-            50% {
-                bottom: 50vh;
-                opacity: 1;
-            }
-            100% {
-                bottom: 100vh;
-                opacity: 0;
-            }
-        }
-
-        @keyframes rocketFloat {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .rocket-container {
-            position: fixed;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 4rem;
-            animation: rocketLaunch 3s ease-in-out forwards, rocketFloat 1s ease-in-out 1.5s;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        /* Scroll Reveal Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .reveal {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        /* Header */
-        header {
-            background-color: var(--primary-dark);
-            color: var(--text-light);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            height: 70px;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 100%;
-            width: auto;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: var(--accent-gold);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-gold);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .btn-proposal {
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-proposal:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            background-color: var(--hero-bg);
-            padding: 6rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-logo {
-            height: 280px;
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-logo img {
-            height: 100%;
-            width: auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 span {
-            color: var(--accent-gold);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-cta {
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(201, 169, 97, 0.4);
-        }
-
-        /* Services Section */
-        .services {
-            background-color: #f0f2f5;
-            padding: 4rem 2rem;
-        }
-
-        .services-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 3rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* About Section */
-        .about {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
-            padding: 4rem 2rem;
-        }
-
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 3rem;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            color: #555;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .about-image {
-            text-align: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-image h3 {
-            color: var(--primary-dark);
-            margin-top: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .about-image p {
-            color: var(--accent-gold);
-            font-weight: bold;
-            margin-top: 0.5rem;
-        }
-
-        .pillars {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .pillar {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .pillar h4 {
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .pillar p {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--primary-dark);
-            color: var(--text-light);
-            padding: 4rem 2rem;
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .contact-item i {
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-        }
-
-        .contact-item h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item a {
-            color: var(--accent-gold);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--text-light);
-        }
-
-        .contact-form {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--accent-gold);
-            border-radius: 5px;
-            font-family: inherit;
-            background-color: rgba(255, 255, 255, 0.95);
-            color: var(--text-dark);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .btn-send {
-            width: 100%;
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-send:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #000;
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 2rem;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-content h2 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-        }
-
-        .modal-content p {
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .modal-content button {
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .modal-content button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Disable DevTools */
-        body {
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-        }
-    </style>
 </head>
 <body>
-    <!-- Rocket Animation -->
-    <div class="rocket-container">🚀</div>
-
     <!-- Header -->
-    <header>
-        <div class="header-container">
+    <header class="header">
+        <div class="container">
             <div class="logo">
-                <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/LogiCodem-logo_solo.jpeg" alt="LogiCodem Logo">
+                <img src="images/LogiCodem-logo_solo.jpeg" alt="LogiCodem Logo" class="logo-img">
+                <span class="logo-text">LogiCodem</span>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
+            <nav class="nav">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#contato" class="nav-link">Contato</a>
             </nav>
-            <button class="btn-proposal" onclick="document.getElementById('contactModal').style.display='block'">Solicitar Proposta</button>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="#inicio" class="mobile-nav-link">Início</a>
+        <a href="#servicos" class="mobile-nav-link">Serviços</a>
+        <a href="#sobre" class="mobile-nav-link">Sobre</a>
+        <a href="#contato" class="mobile-nav-link">Contato</a>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="hero-container">
-            <div class="hero-logo">
-                <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/LogiCodem-logo_solo.jpeg" alt="LogiCodem Logo">
-            </div>
-            <h1>Inteligência <span>Aplicada</span> ao Código</h1>
-            <p>Transformamos suas ideias em soluções tecnológicas inovadoras, seguras e escaláveis que impulsionam o crescimento do seu negócio.</p>
-            <button class="btn-cta" onclick="document.getElementById('contactModal').style.display='block'">Fale Conosco</button>
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Inteligência Aplicada ao Código</h1>
+            <p class="hero-subtitle">Transformamos ideias em soluções tecnológicas seguras, eficientes e escaláveis para impulsionar seu negócio.</p>
+            <a href="#contato" class="cta-button">Fale Conosco</a>
+        </div>
+        <div class="hero-background">
+            <div class="circuit-line circuit-1"></div>
+            <div class="circuit-line circuit-2"></div>
+            <div class="circuit-line circuit-3"></div>
+            <div class="circuit-dot"></div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="servicos">
-        <div class="services-container">
-            <h2>Nossos Serviços</h2>
+    <section id="servicos" class="services">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <p class="section-subtitle">Soluções completas para transformar sua visão em realidade</p>
+            
             <div class="services-grid">
-                <div class="service-card reveal">
-                    <i class="fas fa-code"></i>
-                    <h3>Desenvolvimento de Software</h3>
-                    <p>Criamos aplicações personalizadas com tecnologias modernas e arquitetura robusta para suas necessidades específicas.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Desenvolvimento de Sistemas Personalizados</h3>
+                    <p>Criamos sistemas sob medida que atendem às necessidades específicas do seu negócio, com arquitetura robusta e escalável.</p>
                 </div>
-                <div class="service-card reveal">
-                    <i class="fas fa-globe"></i>
-                    <h3>Sistemas Web Corporativos</h3>
-                    <p>Plataformas web responsivas e intuitivas que transformam a forma como sua empresa opera e se comunica.</p>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Sistemas Web Modernos e Responsivos</h3>
+                    <p>Desenvolvemos aplicações web de alta performance, totalmente responsivas e otimizadas para todas as plataformas.</p>
                 </div>
-                <div class="service-card reveal">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Automações Inteligentes</h3>
-                    <p>Otimize seus processos com automações que reduzem custos, aumentam produtividade e eliminam erros manuais.</p>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Aplicativos e Automações</h3>
+                    <p>Automatizamos processos complexos e desenvolvemos aplicativos inteligentes que aumentam a produtividade.</p>
                 </div>
-                <div class="service-card reveal">
-                    <i class="fas fa-plug"></i>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
                     <h3>Integrações e APIs</h3>
-                    <p>Conecte seus sistemas com soluções de integração eficientes que ampliam as funcionalidades da sua empresa.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fas fa-camera"></i>
-                    <h3>Câmeras de Segurança com IA</h3>
-                    <p>Sistemas de vigilância inteligentes com reconhecimento de padrões para proteção avançada do seu negócio.</p>
-                </div>
-                <div class="service-card reveal">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Soluções em Cloud</h3>
-                    <p>Infraestrutura escalável e segura na nuvem para seu negócio crescer sem limitações técnicas.</p>
+                    <p>Integramos sistemas e desenvolvemos APIs robustas que conectam sua infraestrutura tecnológica de forma segura.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="sobre">
-        <div class="about-container">
-            <h2>Sobre a LogiCodem</h2>
+    <section id="sobre" class="about">
+        <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <p>A LogiCodem é uma empresa de tecnologia focada em criar soluções inovadoras e seguras para transformar negócios. Com expertise em desenvolvimento de software, sistemas web, automações e integrações, nos comprometemos a entregar projetos de alta qualidade que impulsionam o crescimento de nossos clientes.</p>
-                    <p>Sob a liderança de Allison Joanine, CEO e Desenvolvedor, a LogiCodem combina conhecimento técnico profundo com uma visão estratégica para oferecer soluções sob medida que atendem às necessidades específicas de cada cliente.</p>
+                    <h2 class="section-title">Sobre a LogiCodem</h2>
+                    <p class="about-description">
+                        A LogiCodem une <strong>lógica, código e inteligência</strong> para criar soluções tecnológicas seguras, eficientes e sob medida. Nosso objetivo é resolver problemas reais com tecnologia inteligente, estruturada e confiável.
+                    </p>
+                    <p class="about-description">
+                        Somos especialistas em desenvolvimento de software, sistemas web, automações e integrações de APIs. Cada projeto é tratado com excelência, focando em inovação, segurança e eficiência para impulsionar o crescimento do seu negócio.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Segurança</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bolt"></i>
+                            <span>Eficiência</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-expand"></i>
+                            <span>Escalabilidade</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://raw.githubusercontent.com/AllisonJoanine/logicodem-site/main/images/PerfilWhatsapp.jpeg" alt="Allison Joanine">
-                    <h3>Allison Joanine</h3>
-                    <p>CEO & Desenvolvedor</p>
-                </div>
-            </div>
-            <div class="pillars">
-                <div class="pillar reveal">
-                    <h4>Segurança</h4>
-                    <p>Proteção de dados e sistemas de ponta</p>
-                </div>
-                <div class="pillar reveal">
-                    <h4>Performance</h4>
-                    <p>Sistemas otimizados e rápidos</p>
-                </div>
-                <div class="pillar reveal">
-                    <h4>Escalabilidade</h4>
-                    <p>Soluções que crescem com seu negócio</p>
-                </div>
-                <div class="pillar reveal">
-                    <h4>Qualidade</h4>
-                    <p>Código limpo e bem estruturado</p>
+                    <img src="images/PerfilWhatsapp.jpeg" alt="Equipe LogiCodem">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contato">
-        <div class="contact-container">
-            <h2>Entre em Contato</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <a href="mailto:logicodem@gmail.com">logicodem@gmail.com</a>
+    <section id="contato" class="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <p class="section-subtitle">Vamos conversar sobre como podemos ajudar seu negócio</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <a href="mailto:logicodem@gmail.com">logicodem@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <a href="https://wa.me/5515991192202" target="_blank">(15) 99119-2202</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <h3>WhatsApp</h3>
-                    <a href="https://wa.me/5515991192202" target="_blank">(15) 99119-2202</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Localização</h3>
-                    <p>São Paulo, Brasil</p>
-                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Seu Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Seu Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Enviar Mensagem</button>
+                </form>
             </div>
-            <form class="contact-form" onsubmit="sendEmail(event)">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensagem</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn-send">Enviar Mensagem</button>
-            </form>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p><strong>LogiCodem Solutions</strong></p>
-        <p>Inteligência Aplicada ao Código</p>
-        <p>&copy; 2024 LogiCodem. Todos os direitos reservados.</p>
-    </footer>
-
     <!-- Success Modal -->
-    <div id="successModal" class="modal">
+    <div id="successModal" class="success-modal" style="display: none;">
         <div class="modal-content">
-            <h2>Mensagem Enviada com Sucesso!</h2>
+            <div class="modal-header">
+                <h2>Mensagem Enviada com Sucesso!</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
             <p>Obrigado por entrar em contato. Receberemos sua mensagem e em breve retornaremos com uma resposta.</p>
-            <button onclick="document.getElementById('successModal').style.display='none'">Fechar</button>
+            <button class="modal-button" onclick="closeModal()">Fechar</button>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LogiCodem</h3>
+                    <p>Inteligência aplicada ao código</p>
+                </div>
+                <div class="footer-section">
+                    <p>&copy; 2024 LogiCodem Solutions. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
     <script>
-        // Disable DevTools
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I') || 
-                (event.ctrlKey && event.shiftKey && event.key === 'C') || 
-                (event.ctrlKey && event.shiftKey && event.key === 'J')) {
-                event.preventDefault();
-            }
-        });
-
-        document.addEventListener('contextmenu', function(event) {
-            event.preventDefault();
-        });
-
-        // Scroll Reveal
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Send Email
-        function sendEmail(event) {
-            event.preventDefault();
+        // Handle contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-
+            
             // Validate form
             if (!name || !email || !message) {
                 alert('Por favor, preencha todos os campos.');
                 return;
             }
-
-            // Send email using FormSubmit
+            
+            // Create FormData
             const formData = new FormData();
             formData.append('name', name);
             formData.append('email', email);
             formData.append('message', message);
-            formData.append('_captcha', 'false');
-            formData.append('_next', window.location.href);
             
-            fetch('https://formsubmit.co/logicodem@gmail.com', {
+            // Show success modal immediately
+            document.getElementById('successModal').style.display = 'flex';
+            
+            // Clear form
+            document.getElementById('contactForm').reset();
+            
+            // Close modal after 4 seconds
+            setTimeout(() => {
+                document.getElementById('successModal').style.display = 'none';
+            }, 4000);
+            
+            // Send to Formspree in the background
+            fetch('https://formspree.io/f/myzqzwrb', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
             })
             .then(response => {
-                // Show success modal
-                document.getElementById('successModal').style.display = 'block';
-                
-                // Clear form
-                document.querySelector('.contact-form').reset();
-                
-                // Close modal after 3 seconds
-                setTimeout(() => {
-                    document.getElementById('successModal').style.display = 'none';
-                }, 3000);
+                if (response.ok) {
+                    console.log('Email enviado com sucesso!');
+                } else {
+                    console.error('Erro ao enviar:', response.status);
+                }
             })
             .catch(error => {
                 console.error('Erro:', error);
-                // Show success modal anyway
-                document.getElementById('successModal').style.display = 'block';
-                document.querySelector('.contact-form').reset();
-                setTimeout(() => {
-                    document.getElementById('successModal').style.display = 'none';
-                }, 3000);
             });
+        });
+        
+        // Close modal function
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
         }
-
+        
         // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('successModal');
