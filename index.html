@@ -114,15 +114,15 @@
                         </div>
                     </div>
                     
-                    <form class="contact-form" id="contactForm" name="contact" method="POST" action="https://usebasin.com/f/c6c2f1c3c3c3">
+                    <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Seu Nome" required>
+                            <input type="text" id="name" name="name" placeholder="Seu Nome" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="Seu Email" required>
+                            <input type="email" id="email" name="email" placeholder="Seu Email" required>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" placeholder="Sua Mensagem" required></textarea>
+                            <textarea id="message" name="message" placeholder="Sua Mensagem" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
                     </form>
@@ -182,18 +182,35 @@
             }
         }
         
-        // Show success modal when form is submitted
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            // Wait a bit for the form to submit, then show modal
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link
+            const subject = `Novo contato de ${name}`;
+            const body = `Nome: ${name}%0AEmail: ${email}%0A%0AMensagem:%0A${message}`;
+            const mailtoLink = `mailto:logicodem@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+            
+            // Show success modal
+            document.getElementById('successModal').style.display = 'flex';
+            
+            // Clear form
+            document.getElementById('contactForm').reset();
+            
+            // Close modal after 4 seconds
             setTimeout(() => {
-                document.getElementById('successModal').style.display = 'flex';
-                
-                // Close modal after 4 seconds
-                setTimeout(() => {
-                    document.getElementById('successModal').style.display = 'none';
-                }, 4000);
+                document.getElementById('successModal').style.display = 'none';
+            }, 4000);
+            
+            // Open mailto link (this will open the user's email client)
+            setTimeout(() => {
+                window.location.href = mailtoLink;
             }, 500);
-        });
+        }
     </script>
 </body>
 </html>
